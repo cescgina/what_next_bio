@@ -28,4 +28,19 @@
     }
 
     $db=null; //Close the connection to the database
+/* 
+PREPARED STATEMENTS
+$stmt = $db->prepare("INSERT INTO table(field1,field2) VALUES(:field1,:field2)");
+$stmt->execute(array(':field1' => $field1, ':field2' => $field2));
+$affected_rows = $stmt->rowCount();
+
+$stmt = $db->prepare("DELETE FROM table WHERE id=:id");
+    $stmt->bindValue(':id', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    $affected_rows = $stmt->rowCount();
+    
+$stmt = $db->prepare("UPDATE table SET name=? WHERE id=?");
+    $stmt->execute(array($name, $id));
+    $affected_rows = $stmt->rowCount();
+*/
 ?>

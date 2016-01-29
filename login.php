@@ -1,6 +1,5 @@
 <?php
 session_start();
-<<<<<<< HEAD
 $user = "dbw09";
 $pass ="dbw2016";
 $host="localhost";
