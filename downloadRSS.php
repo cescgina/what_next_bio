@@ -21,10 +21,7 @@
     }
     $urleur= "http://ec.europa.eu/euraxess/rssFP.cfm?&idResearchField=12476878&idResPopulation=12477307";
     $streur=file_get_contents($urleur);
-//    $rsseur = simplexml_load_file($urleur);
-
     $rsseur=simplexml_load_string($streur);
-
     foreach($rsseur->item as $itemeur) {
             $stmteur = $db->prepare("INSERT INTO jobs(title,link,description,date) VALUES(:title,:link,:description,:date)");
             $stmteur->execute(array(':title' => $itemeur->title, ':link' => $itemeur->link,':description'=> $itemeur->description, ':date'=> date("Y/m/d")));
