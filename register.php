@@ -1,10 +1,68 @@
 <?php
-	if (empty($_POST)){
+require_once 'dbconfig.php';
+
+if($user->is_loggedin()!="")
+{
+    $user->redirect('home.php');
+}
+
+if(isset($_POST['Register']))
+{
+   $first_name = trim($_POST['first_name']);
+   $surname = trim($_POST['surname']);
+   $username = trim($_POST['username']);
+   $email = trim($_POST['email']);
+   $password = trim($_POST['password']); 
+ 
+   if($username=="") {
+      $error[] = "provide username !"; 
+   }
+   else if($email=="") {
+      $error[] = "provide email !"; 
+   }
+   else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $error[] = 'Please enter a valid email address !';
+   }
+   else if($password=="") {
+      $error[] = "provide password !";
+   }
+   else if(strlen($password) < 8){
+      $error[] = "Password must be at least 8 characters"; 
+   }
+   else
+   {
+      try
+      {
+         $stmt = $dbc->prepare("SELECT username,email FROM users WHERE username=:username OR email=:email");
+         $stmt->execute(array(':username'=>$username, ':email'=>$email));
+         $row=$stmt->fetch(PDO::FETCH_ASSOC);
+    
+         if($row['username']==$username) {
+            $error[] = "Username already taken !";
+         }
+         else if($row['email']==$umail) {
+            $error[] = "A user with this email addres has already been registered !";
+         }
+         else
+         {
+            if($user->register($fname,$lname,$uname,$umail,$upass)) 
+            {
+                $user->redirect('register.php?joined');
+            }
+         }
+     }
+     catch(PDOException $e)
+     {
+        echo $e->getMessage();
+     }
+  } 
+}
+
 ?>
 
 <html>
 	<head>
-		<title>Registration form Whatnext?</title>
+		<title>Registration form Whatnext Bio?</title>
 	</head>
 	<body> 
 		<h1>Registration</h1>
@@ -19,39 +77,3 @@
 		</form>
 	</body>
 </html> <!--table needs to be called users-->
-
-
-<?php
-} else {
-	print_r( $_POST );
-	/*Admin data*/
-	$user = "dbw09";
-    $pass ="dbw2016";
-    $host="localhost";
-    $host="mmb.pcb.ub.es";
-    $dbname="DBW09";
-    $dbc = new PDO('mysql:host='.$host.';dbname='.$dbname,$user,$pass) /*db name*/
-
-	/*Data from form*/
-	$first_name = $_POST["first_name"]
-	$surname = $_POST["surname"]
-	$email = $_POST["email"]
-	$username = $_POST["username"];
-	$password = md5($_POST["password"]);
-	$confpassword = md5($_POST["confpassword"]);
-
-	$sql = "INSERT INTO users ( username, password, first_name, surname, email ) VALUES ( :username, :password, :first_name, :surname, :email )";
-	/*insert into table*/
-	$query = $dbc->prepare($sql);
-	$query->execute(array( ':username'=>$username, ':password'=>$password,
-	':first_name'=>$first_name, ':surname'=>$surname, ':email'=>$email ) );
-	$result = $query->execute( array( ':username'=>$username, ':password'=>$password, ':first_name'=>$first_name, ':surname'=>$surname, ':email'=>$email ) );
-	if ( $result ){
-	  echo "<p>You have succesfully registered!</p>";
-	} else {
-	  echo "<p>Sorry, there has been a problem inserting your details.</p>";
-
-	}
-}
-?>
-

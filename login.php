@@ -19,7 +19,7 @@ if (isset($_POST['username']));
 	$sql = "SELECT password FROM users WHERE username='$username'";
 	$query = $dbc->prepare($sql);
     $query->execute(array($_POST['username']));
-    if($query->fetchColumn() === md5($_POST['password'])
+    if(password_verify($_POST['password'],$query->fetchColumn))
     {
         /* starts the session created if login info is correct*/
         session_start();
