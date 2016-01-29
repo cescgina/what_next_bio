@@ -32,7 +32,6 @@
     $dbname="DBW09";
     $dbc = new PDO('mysql:host='.$host.';dbname='.$dbname,$user,$pass) /*db name*/
 
-
 	/*Data from form*/
 	$first_name = $_POST["first_name"]
 	$surname = $_POST["surname"]
@@ -51,6 +50,7 @@
 	  echo "<p>You have succesfully registered!</p>";
 	} else {
 	  echo "<p>Sorry, there has been a problem inserting your details.</p>";
+
 	}
 }
 ?>

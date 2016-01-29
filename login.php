@@ -1,5 +1,6 @@
 <?php
 session_start();
+<<<<<<< HEAD
 $user = "dbw09";
 $pass ="dbw2016";
 $host="localhost";
@@ -37,6 +38,7 @@ if (isset($_POST['username']));
 <html>
 	<head>
 		<title>Login form Whatnext?</title>
+
 	</head>
 	<body> 
 		<form method="post" name="login" action="login.php">
@@ -46,4 +48,3 @@ if (isset($_POST['username']));
 		</form>
 	</body>
 </html>
-
