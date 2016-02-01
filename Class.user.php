@@ -14,14 +14,14 @@ class USER
        {
            $new_password = password_hash($password, PASSWORD_DEFAULT);
    
-           $stmt = $this->db->prepare("INSERT INTO users(first_name,surname,username,email,passord) 
+           $stmt = $this->db->prepare("INSERT INTO users(first_name,surname,username,email,password) 
                                                        VALUES(:first_name, :surname, :username, :email, :password)");
-              
+           $stmt->bindparam("first_name",$first_name);      
+           $stmt->bindparam("surname",$surname);      
            $stmt->bindparam(":username", $username);
            $stmt->bindparam(":email", $email);
            $stmt->bindparam(":password", $new_password);            
            $stmt->execute(); 
-   
            return $stmt; 
        }
        catch(PDOException $e)
