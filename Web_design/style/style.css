@@ -1,0 +1,97 @@
+header {
+	width: 100%;
+	position: fixed;
+	background-color:33FFFF;
+	text-align:center;
+	padding:0px;
+	border-top: 3px solid #282828;
+	border-bottom: 5px solid #282828;
+	top: 0px;
+	height: 200px;
+	margin:0px solid;
+	left: 0px;
+	right: 0px;
+}
+
+#title {
+	height: 50px;
+	font-family: "Times New Roman", Georgia, Serif;
+	font-size: 60px;
+	color: #780000;
+}
+#subtitle {
+	height: 50px;
+	font-family: "Times New Roman", Georgia, Serif;
+	font-size: 30px;
+	color: #808080;
+}
+
+section {
+	margin-top:200px;
+	float:center;
+	padding:10px;
+	text-align:center;
+	font-family: "Times New Roman", Georgia, Serif;
+}
+
+html { 
+	background: url("background.jpg") no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+#go_to {
+	position: fixed;
+	bottom:0px;
+	left:49%;
+}
+
+#nav {
+	margin-top:40px;
+	position: fixed;
+	padding: 10px;
+	left: 0px;
+	bottom: 0px;
+	width: 250px;
+	height: 455px;
+	background:#063;	
+}
+
+.vspace {
+	margin-top: 10px;
+}
+
+.vspace2 {
+	margin-left: 10px;
+	margin-top: 5px;
+}
+
+aside {
+	width:450px;
+	float:right;
+	padding:10px;
+}
+
+
+
+/* FONT */
+
+/* Font styles */
+p.normal {
+    font-style: normal;
+}
+
+p.italic {
+    font-style: italic;
+}
+
+p.oblique {
+    font-style: oblique;
+}
+
+/* Font types */
+p.sansserif {
+    font-family: "Times New Roman", Georgia, Serif;
+}

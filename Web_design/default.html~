@@ -1,0 +1,10 @@
+{% extends 'frontpage.html' %}
+
+{% block content %}
+	
+		<a href="Login.php">Log in</a>
+		<form action="/Register.html">
+    			<input type="submit" value="Register">
+		</form>
+	
+{% block content %}

@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>WhatNextBio</title>
+		<link rel="stylesheet" href="style/style.css">
+	</head>
+	
+	<body>
+
+		<header>
+			<h1 id="title">WhatNextBio!</h1>
+			<h2 id="subtitle">Your go-to resource for PhD and postgrad offers</h2>
+		</header>
+
+		<div id="nav">
+			<ul>
+				<input class="vspace input" name="user" required="required" placeholder="Username">
+				<input class="vspace input" name="password" required="required" placeholder="Password">
+				<form action="Login.php">
+  					<input class="vspace2 input" type="submit" value="Log In"/>
+				</form>
+				<form action="/Register.html">
+    					<input class="vspace2 input" type="submit" value="Register">
+				</form>
+			</ul>
+		</div>
+
+		<section>
+			<p id="Start">News go here</p>
+		</section>
+		<div id="go_to">
+			<a href="#Start">
+				<img src="style/uparrow.png" alt="Go_to_Top" style="width:30px;height:30px;">
+			</a>
+		</div>
+		<aside>
+			<a href="http://mmb.pcb.ub.es/formacio/~dbw00/">
+				<img src="style/master_logo.jpg" alt="Home_img" style="width:425px;height:125px;">
+			</a>
+		</aside>
+	</body>
+</html> 
