@@ -1,49 +1,45 @@
 <?php
-session_start();
-$user = "dbw09";
-$pass ="dbw2016";
-$host="localhost";
-$host="mmb.pcb.ub.es";
-$dbname="DBW09";
-$dbc = new PDO('mysql:host='.$host.';dbname='.$dbname,$user,$pass) /*db name*/
+require_once 'dbconfig.php';
 
-$sql = "SELECT * FROM users";
-$query = $dbc->prepare($sql);
-$query->execute();
-if (isset($_POST['username']));
+if($user->is_loggedin()!="")
 {
-	/*get data from form*/
-	$username = $_POST["username"];
-	$password = $_POST["password"];
-	/*compare with database*/
-	$sql = "SELECT password FROM users WHERE username='$username'";
-	$query = $dbc->prepare($sql);
-    $query->execute(array($_POST['username']));
-    if(password_verify($_POST['password'],$query->fetchColumn))
-    {
-        /* starts the session created if login info is correct*/
-        session_start();
-        $_SESSION['username'] = $_POST['username'];
-
-        header("Location: members.php"); /*name of the logged in file*/
-        exit;
-    }else{
-		echo "Incorrect username or password. Please try again."
-	}
+ $user->redirect('home.php');
 }
+
+if(isset($_POST['login']))
+{
+ $name_email = $_POST['name_email'];
+ $password = $_POST['password'];
+  
+ if($user->login($name_email,$password))
+ {
+  $user->redirect('home.php');
+ }
+ else
+ {
+  $error = "Wrong Details !";
+ } 
 }
 ?>
-
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Login form Whatnext?</title>
-
-	</head>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="styles_register.css" type="text/css"  />
+	<title>Login form Whatnext Bio?</title>
+</head>
 	<body> 
-		<form method="post" name="login" action="login.php">
-			Username: <input type="text" name="username"><br /><br />
-			Password: <input type="password" name="password"><br /><br />
-			<input type="submit" name="login" value="Log in">
-		</form>
+		<h2>Sign in</h2><br />
+		<div class="container">
+			<div class="form-container">
+			<form method="post" name="login" action="login.php">
+				<label>Username/email: </label><input type="text" name="name_email"required><br /><br />
+				<label>Password:</label> <input type="password" name="password" required><br /><br />
+				<input type="submit" name="login" value="Sign in">
+				<br /><br />
+				<label>I don't have account yet ! <a href="register.php">Register</a></label>
+			</form>
+			</div>
+		</div>
 	</body>
 </html>

@@ -30,11 +30,11 @@ class USER
        }    
     }
  
-    public function login($username,$email,$password)
+    public function login($name_email,$password)
     {
        try
        {
-          $stmt = $this->db->prepare("SELECT * FROM users WHERE username=:username OR email=:email LIMIT 1");
+          $stmt = $this->db->prepare("SELECT * FROM users WHERE username=:name_email OR email=:name_email LIMIT 1");
           $stmt->execute(array(':username'=>$username, ':email'=>$email));
           $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
           if($stmt->rowCount() > 0)

@@ -1,0 +1,24 @@
+header {
+	position: fixed;
+	background-color:33FFFF;
+	text-align:left;
+	padding:0px;
+	border-top: 3px solid #282828;
+	border-bottom: 5px solid #282828;
+	top: 0px;
+	height: 200px;
+	margin:0px solid;
+	left: 0px;
+	right: 0px;
+}
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 250px;
+    text-align: right;
+}
+input {
+  display: inline-block;
+  float: left;
+}

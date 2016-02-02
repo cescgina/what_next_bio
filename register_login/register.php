@@ -47,7 +47,7 @@ if(isset($_POST['register']))
             $error = "Username already taken !";
          }
          else if($row['email']==$email) {
-            $error = "A user with this email addres has already been registered !";
+            $error = "A user with this email address has already been registered !";
          }
          else
          {
@@ -79,13 +79,13 @@ if(isset($_POST['register']))
 	<body> 
 		<h1>Registration</h1>
 		<form method="post" name="register" action="register.php">
-			Name: <input type="text" name="first_name"><br /><br />
-			Surname: <input type="text" name="surname"><br /><br />
-			email: <input type="text" name="email"><br /><br />
-			Username: <input type="text" name="username"><br /><br />
-			Password: <input type="password" name="password"><br /><br />
-			Confirm Password: <input type="password" name="conf_password"><br /><br />
+			<label>Name:</label> <input type="text" name="first_name"><br /><br />
+			<label>Surname: </label><input type="text" name="surname"><br /><br />
+			<label>email: </label><input type="text" name="email"><br /><br />
+			<label>Username: </label><input type="text" name="username"><br /><br />
+			<label>Password(>7 characters):</label><input type="password" name="password"><br /><br />
+			<label>Confirm Password: </label><input type="password" name="conf_password"><br /><br />
 			<input type="submit" name="register" value="Register">
 		</form>
 	</body>
-</html> <!--table needs to be called users-->
+</html>
