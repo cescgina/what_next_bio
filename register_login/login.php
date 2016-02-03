@@ -8,10 +8,11 @@ if($user->is_loggedin()!="")
 
 if(isset($_POST['login']))
 {
- $name_email = $_POST['name_email'];
+ $username = $_POST['name_email'];
+ $email = $_POST['name_email'];
  $password = $_POST['password'];
   
- if($user->login($name_email,$password))
+ if($user->login($username,$email,$password))
  {
   $user->redirect('home.php');
  }
@@ -24,8 +25,8 @@ if(isset($_POST['login']))
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="styles_register.css" type="text/css"  />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Login form Whatnext Bio?</title>
 </head>
 	<body> 
@@ -37,7 +38,7 @@ if(isset($_POST['login']))
 				<label>Password:</label> <input type="password" name="password" required><br /><br />
 				<input type="submit" name="login" value="Sign in">
 				<br /><br />
-				<label>I don't have account yet ! <a href="register.php">Register</a></label>
+				<label>I don't have an account yet ! <a href="register.php">Register</a></label>
 			</form>
 			</div>
 		</div>

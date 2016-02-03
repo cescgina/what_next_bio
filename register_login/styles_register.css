@@ -22,3 +22,14 @@ input {
   display: inline-block;
   float: left;
 }
+h2 {
+	text-align: left;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-weight: bold;
+	font-size: 30px;
+	margin-left:100px;
+}
+label {
+	font-family:Tahoma, Geneva, sans-serif;
+	font-weight: bold;
+}

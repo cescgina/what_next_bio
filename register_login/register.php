@@ -64,7 +64,7 @@ if(isset($_POST['register']))
   }
   if(isset($error)){
       echo "There has been an error";
-      echo "<br>"
+      echo "<br>";
       echo $error;
       exit;
   }
@@ -74,10 +74,11 @@ if(isset($_POST['register']))
 
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="styles_register.css">
 		<title>Registration form Whatnext Bio?</title>
 	</head>
 	<body> 
-		<h1>Registration</h1>
+		<h2>Registration</h2>
 		<form method="post" name="register" action="register.php">
 			<label>Name:</label> <input type="text" name="first_name"><br /><br />
 			<label>Surname: </label><input type="text" name="surname"><br /><br />
