@@ -1,11 +1,11 @@
 <?php
     //$host="localhost";
-    /*$host="mmb.pcb.ub.es";
+    $host="mmb.pcb.ub.es:13306";
     $user = "dbw09";
     $pass = "dbw2016";
     $dbname = "DBW09";
     $db = new PDO('mysql:host='.$host.';dbname='.$dbname.';charset=utf8', $user, $pass);
-    */
+    
 
     date_default_timezone_set('Europe/Madrid');
     $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n"));//not sure what does, without it BAD GATEWAY error
@@ -38,7 +38,7 @@
             $stmt = $db->prepare("SELECT link FROM demo WHERE link=:link");
             $stmt->execute(array(':link'=>$itemeur->link));
             $affeccted_rows=$stmt->rowCount();
-            if ($affected_rows == 0){
+            if ($affeccted_rows == 0){
                //$stmteur = $db->prepare("INSERT INTO jobs(title,link,description,date) VALUES(:title,:link,:description,:date)");
                $stmteur = $db->prepare("INSERT INTO demo(title,link,description,location,date) VALUES(:title,:link,:description,:location,:date)");
             $stmteur->execute(array(':title' => $itemeur->title, ':link' => $itemeur->link,':description'=> $itemeur->description,':location'=>$institution, ':date'=> date("Y/m/d")));
@@ -65,9 +65,9 @@
             $stmt = $db->prepare("SELECT link FROM demo WHERE link=:link");
             $stmt->execute(array(':link'=>$itemsci->link));
             $affeccted_rows=$stmt->rowCount();
-            if ($affected_rows == 0){
+            if ($affeccted_rows == 0){
                //$stmtsci = $db->prepare("INSERT INTO jobs(title,link,description,date) VALUES(:title,:link,:description,:date)");
-               $stmtsci = $db->prepare("INSERT INTO demo(title,link,description,location,date) VALUES(:title,:link,:description,:date)");
+               $stmtsci = $db->prepare("INSERT INTO demo(title,link,description,location,date) VALUES(:title,:link,:description,:location,:date)");
                 $stmtsci->execute(array(':title' => $itemsci->title, ':link' => $itemsci->link,':description'=> $desc, ':location'=>$location,':date'=> date("Y/m/d")));
             }
             else{
