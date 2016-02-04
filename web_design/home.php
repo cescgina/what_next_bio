@@ -52,14 +52,16 @@ echo '
 			<section>
 				<p id="Start">News go here</p>
 				<div id="page-wrap">
+				<table>
 				<?php
-					$query = "SELECT description, title, location, date, link FROM DEMO LIMIT 10";
-					$result = mysql_query($query);
-					while($row = mysql_fetch_array($result)){   
-						echo "<table<tr><td>" . $row['description'] . "</td><td>" . $row['university'] . "</td></tr>";
+                    $stmt = $dbc->prepare("SELECT description, title, location, date, link FROM demo LIMIT 10");
+                    $stmt->execute();
+					$result = $stmt->fetchAll();
+                    foreach ($result as $row){
+                    echo "<tr><td>" . $row['description'] . "</td><td>" . $row['location'] . "</td></tr>";
 					}
 					echo "</table>";
-					mysql_close();
+					$dbc=null;//close MySQL connection
 				?>
 
            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>

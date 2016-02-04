@@ -1,6 +1,6 @@
 <?php
-    //$host="localhost";
-    $host="mmb.pcb.ub.es:13306";
+    $host="localhost";
+    //$host="mmb.pcb.ub.es:13306";
     $user = "dbw09";
     $pass = "dbw2016";
     $dbname = "DBW09";
