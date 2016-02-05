@@ -6,17 +6,24 @@ if($user->is_loggedin()!="")
 }
 if(isset($_POST['login']))
 {
- $username = $_POST['name_email'];
- $email = $_POST['name_email'];
+ if (preg_match("/@/",$_POST['name_email'])){
+    $email = $_POST['name_email'];  
+     $username='';
+ }
+else {
+    $username = $_POST['name_email'];
+    $email='';
+}
  $password = $_POST['password'];
-  
  if($user->login($username,$email,$password))
  {
-  $user->redirect('home.php');
+    $user->redirect('home.php');
  }
  else
  {
   $error = "Wrong Details !";
+     echo $error;
+    exit;
  } 
 }
 ?>

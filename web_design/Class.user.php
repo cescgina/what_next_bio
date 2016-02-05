@@ -36,10 +36,10 @@ class USER
        {
           $stmt = $this->db->prepare("SELECT * FROM users WHERE username=:username OR email=:email LIMIT 1");
           $stmt->execute(array(':username'=>$username, ':email'=>$email));
-          $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+          $userRow=$stmt->fetchAll();
           if($stmt->rowCount() > 0)
           {
-             if(password_verify($password, $userRow['password']))
+             if(password_verify($password, $userRow[0]['password']))
              {
                 $_SESSION['user_session'] = $userRow['id'];
                 return true;
@@ -66,7 +66,7 @@ class USER
  
    public function redirect($url)
    {
-       header("Location: $url");
+       header("Location: ".$url);
    }
  
    public function logout()
