@@ -1,12 +1,9 @@
 html { 
-	background: url("background.jpg") no-repeat center center fixed; 
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+	background-color: #DCDCDC
 }
 
 body {
+	font-family:Tahoma, Geneva, sans-serif;
 	position:absolute;
 	top:0px;
 	left:0px;
@@ -16,6 +13,8 @@ body {
 
 #head {
 	text-align:center;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-weight: bold;
 	position: fixed;
 	width: 100%;
 	height: 25%;
@@ -27,19 +26,20 @@ body {
 	right: 0px;
 	z-index: 2;
 	margin:0px solid;
-	background-color: #BCCBDE;
+	background-color: #C2DF95;
 }
 
 #title {
-	font-family: "Times New Roman", Georgia, Serif;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-weight: bold;
 	font-size: 300%;
-	color: #E6E9F0;
+	color: #FFFFFF;
 }
 
 #subtitle {
-	font-family: "Times New Roman", Georgia, Serif;
-	font-size: 200%;
-	color: #431C5D;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size: 150%;
+	color: #FFFFFF;
 }
 
 #nav {
@@ -51,7 +51,7 @@ body {
 	padding: 10px;
 	left: 0px;
 	bottom: 0px;
-	background:#CDD422;
+	background:#DFBE75;
 	border-right: 5px solid #282828;	
 }
 
