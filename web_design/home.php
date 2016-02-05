@@ -15,8 +15,6 @@ require_once 'dbconfig.php';
 					<h1 id="title">WhatNextBio!</h1>
 					<h2 id="subtitle">Your go-to resource for PhD and postgrad offers</h2>
 				</header>
-		</div>
-		<div>
 			<div id="nav">
 			<?php
 				if($user->is_loggedin()!="")
@@ -25,8 +23,6 @@ require_once 'dbconfig.php';
 						<form method="post" name="logout" action="logout.php">
   							<input type="submit" value="Log Out"/>
 						</form>
-						<br>
-						<p>Username:';?><?php echo $username;?><?php echo '</p>
 						<br>
 						<p>My tags:</p>
 						<form name="tags">
