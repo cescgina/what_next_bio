@@ -15,8 +15,8 @@ body {
 }
 
 #head {
-	position: fixed;
 	text-align:center;
+	position: fixed;
 	width: 100%;
 	height: 25%;
 	padding:0px;
@@ -27,19 +27,19 @@ body {
 	right: 0px;
 	z-index: 2;
 	margin:0px solid;
-	background-color: #66FFFF;
+	background-color: #BCCBDE;
 }
 
 #title {
 	font-family: "Times New Roman", Georgia, Serif;
 	font-size: 300%;
-	color: #780000;
+	color: #E6E9F0;
 }
 
 #subtitle {
 	font-family: "Times New Roman", Georgia, Serif;
 	font-size: 200%;
-	color: #808080;
+	color: #431C5D;
 }
 
 #nav {
@@ -51,7 +51,7 @@ body {
 	padding: 10px;
 	left: 0px;
 	bottom: 0px;
-	background:#A9A9A9;
+	background:#CDD422;
 	border-right: 5px solid #282828;	
 }
 

@@ -11,12 +11,12 @@ require_once 'dbconfig.php';
 	
 	<body>
 		<div id="head">
-			<div id="head-text">
 				<header>
 					<h1 id="title">WhatNextBio!</h1>
 					<h2 id="subtitle">Your go-to resource for PhD and postgrad offers</h2>
 				</header>
-			</div>
+		</div>
+		<div>
 			<div id="nav">
 			<?php
 				if($user->is_loggedin()!="")
@@ -62,11 +62,11 @@ require_once 'dbconfig.php';
 				<div id="page-wrap">
 					<table id="Start">
 					<?php
-						$stmt = $dbc->prepare("SELECT description, title, location, date, link FROM demo LIMIT 10");
+						$stmt = $dbc->prepare("SELECT id,description, title, location, date, link FROM demo  ORDER BY id DESC LIMIT 20");
 						$stmt->execute();
 						$result = $stmt->fetchAll();
        		         			foreach ($result as $row){
-       		         			    echo "<tr><td>" . $row['title'] . "</td><td>" . $row['location'] . "</td><td>" . $row['link'] . "</td></tr>";
+       		         			    echo "<tr><td><a href=" . $row['link']. ">".$row['title'] . "</a></td><td>" . $row['location'] . "</td></tr>";
 						}
 						$dbc=null;//close MySQL connection
 					?>
