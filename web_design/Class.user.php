@@ -42,7 +42,7 @@ class USER
              if(password_verify($password, $userRow[0]['password']))
              {
                 $_SESSION['user_session'] = $userRow['id'];
-		$_SESSION['username'] = $username;
+		$_SESSION['username'] = $userRow['username'];
                 return true;
              }
              else
