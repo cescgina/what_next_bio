@@ -2,6 +2,7 @@
 class USER
 {
     private $db;
+    public $username;
  
     function __construct($dbc)
     {
@@ -29,20 +30,20 @@ class USER
            echo $e->getMessage();
        }    
     }
- 
+	
     public function login($username,$email,$password)
     {
        try
        {
           $stmt = $this->db->prepare("SELECT * FROM users WHERE username=:username OR email=:email LIMIT 1");
           $stmt->execute(array(':username'=>$username, ':email'=>$email));
-          $userRow=$stmt->fetchAll();
+          $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
           if($stmt->rowCount() > 0)
           {
-             if(password_verify($password, $userRow[0]['password']))
+             if(password_verify($password, $userRow['password']))
              {
                 $_SESSION['user_session'] = $userRow['id'];
-		$_SESSION['username'] = $userRow['username'];
+                $_SESSION['username'] = $userRow['username'];
                 return true;
              }
              else
@@ -67,7 +68,7 @@ class USER
  
    public function redirect($url)
    {
-       header("Location: ".$url);
+       header("Location: $url");
    }
  
    public function logout()

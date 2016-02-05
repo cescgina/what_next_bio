@@ -71,7 +71,7 @@ if(isset($_POST['register']))
 
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="style/style.css">
+		<link type="text/css" rel="stylesheet" href="style/style.php">
 		<title>Registration form Whatnext Bio?</title>
 	</head>
 	<body> 

@@ -6,7 +6,7 @@ require_once 'dbconfig.php';
 	<head>
 		<meta charset="UTF-8">
 		<title>WhatNextBio</title>
-		<link rel="stylesheet" href="style/style.css">
+		<link type="text/css" rel="stylesheet" href="style/style.php">
 	</head>
 	
 	<body>
@@ -24,7 +24,7 @@ require_once 'dbconfig.php';
   							<input type="submit" value="Log Out"/>
 						</form>
 						<br>
-						<p>Username?<br>';?><?php echo $_SESSION['username']; '</p><br>
+						<p>Username:</p><p>';?><?php echo $_SESSION['username'];?><?php echo '</p>
 						<p>My tags:</p>
 						<form name="tags">
 							<ul>
@@ -41,6 +41,7 @@ require_once 'dbconfig.php';
 					';
 				} else {
 					echo '
+						<br>
 						<form action="login.php">
   							<input type="submit" value="Log In"/></br>
 						</form>
@@ -54,18 +55,33 @@ require_once 'dbconfig.php';
 			?>
 			</div>
 		</div>
+		<p id="Start"></p>
 		<div id ="page">
 			<section>
 				<div id="page-wrap">
-					<table id="Start">
+					<table>
 					<?php
-						$stmt = $dbc->prepare("SELECT id,description, title, location, date, link FROM demo  ORDER BY id DESC LIMIT 20");
+						$sql = "SELECT count(*) FROM demo"; 
+						$result = $dbc->prepare($sql); 
+						$result->execute(); 
+						$number_of_rows = $result->fetchColumn(); 
+						$x = 20;
+						$n = isset($_GET['page']) ? (int)$_GET['page'] : 0;
+						$sql = "SELECT id, title, location, date, link
+							 FROM demo ORDER BY date DESC LIMIT ".($x * $n).", $x";
+						$stmt = $dbc->prepare($sql);
 						$stmt->execute();
 						$result = $stmt->fetchAll();
        		         			foreach ($result as $row){
        		         			    echo "<tr><td><a href=" . $row['link']. ">".$row['title'] . "</a></td><td>" . $row['location'] . "</td></tr>";
 						}
-						$dbc=null;//close MySQL connection
+						$dbc=null;
+						if($n != 0) {
+							echo('<a href="?page='.($n-1).'">Previous |</a>');
+						}
+						if (($n+1) * $x < $number_of_rows) {
+							echo('<a href="?page='.($n+1).'">Next</a>');
+						}
 					?>
 					</table>
 				</div>

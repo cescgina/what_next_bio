@@ -6,31 +6,24 @@ if($user->is_loggedin()!="")
 }
 if(isset($_POST['login']))
 {
- if (preg_match("/@/",$_POST['name_email'])){
-    $email = $_POST['name_email'];  
-     $username='';
- }
-else {
-    $username = $_POST['name_email'];
-    $email='';
-}
+ $username = $_POST['name_email'];
+ $email = $_POST['name_email'];
  $password = $_POST['password'];
+  
  if($user->login($username,$email,$password))
  {
-    $user->redirect('home.php');
+  $user->redirect('home.php');
  }
  else
  {
   $error = "Wrong Details !";
-     echo $error;
-    exit;
  } 
 }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="style/style.css" type="text/css"  />
+	<link type="text/css" rel="stylesheet" href="style/style.php">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Login form Whatnext Bio?</title>
 </head>
