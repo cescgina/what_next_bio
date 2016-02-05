@@ -67,14 +67,9 @@ if(isset($_POST['register']))
       exit;
   }
 }
+include('header.php');
 ?>
-
-<html>
-	<head>
-		<link type="text/css" rel="stylesheet" href="style/style.php">
-		<title>Registration form Whatnext Bio?</title>
-	</head>
-	<body> 
+		</div>
 		<div id="page-wrap">
 			<div id="form-container">
 				<p id="form-title">Registration</p>
@@ -89,6 +84,4 @@ if(isset($_POST['register']))
 				</form>
 			</div>
 		</div>
-	</body>
-</html>
-
+<?php include('footer.php');?>

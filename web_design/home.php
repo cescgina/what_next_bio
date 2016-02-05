@@ -1,53 +1,43 @@
 <?php
 require_once 'dbconfig.php';
+include('header.php');
 ?>
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>WhatNextBio</title>
-		<link type="text/css" rel="stylesheet" href="style/style.php">
-	</head>
-	
-	<body>
-		<div id="head">
-				<header>
-					<h1 id="title">WhatNextBio!</h1>
-					<h2 id="subtitle">Your go-to resource for PhD and postgrad offers</h2>
-				</header>
+
 			<div id="nav">
 			<?php
 				if($user->is_loggedin()!="")
 					{ 
 					 echo '
-						<form method="post" name="logout" action="logout.php">
-  							<input type="submit" value="Log Out"/>
-						</form>
-						<br>
 						<p>Username:</p><p>';?><?php echo $_SESSION['username'];?><?php echo '</p>
-						<p>My tags:</p>
-						<form name="tags">
-							<ul>
-								<input type="checkbox" name="option1" value="Tag1" checked>Tag1<br>
-								<input type="checkbox" name="option2" value="Tag2" checked>Tag2<br>
-								<input type="checkbox" name="option3" value="Tag3" checked>Tag3<br>
-							</ul>
+						<form method="post" name="logout" action="logout.php">
+  							<input class="Button" type="submit" value="Log Out"/>
 						</form>
 						<br>
 						<form method="post" name="change" action="logout.php">
-  							<input type="submit" value="Change password"/>
+  							<input class="Button" type="submit" value="Change password"/>
 						</form>
+						<br>
+						<div class="dropdown">
+							<button class="dropbtn">My tags</button>
+							<div class="dropdown-content">
+								<form name="tags">
+									<input type="checkbox" name="option1" value="Tag1" checked>Bioinformatics<br>
+									<input type="checkbox" name="option2" value="Tag2" checked>Tag2<br>
+									<input type="checkbox" name="option3" value="Tag3" checked>Tag3<br>
+								</form>
+  							</div>
+						</div>
 						<br>
 					';
 				} else {
 					echo '
 						<br>
 						<form action="login.php">
-  							<input type="submit" value="Log In"/></br>
+  							<input class="Button" type="submit" value="Log In"/></br>
 						</form>
 						<br>
 						<form action="register.php">
-  							<input type="submit" value="Register"/>
+  							<input class="Button" type="submit" value="Register"/>
 						</form>
 						<br>
 					';
@@ -58,15 +48,11 @@ require_once 'dbconfig.php';
 		<p id="Start"></p>
 		<div id ="page">
 			<section>
+				<?php include('row_count.php'); ?>
 				<div id="page-wrap">
+					<?php include('prev_next.php'); ?>
 					<table>
 					<?php
-						$sql = "SELECT count(*) FROM demo"; 
-						$result = $dbc->prepare($sql); 
-						$result->execute(); 
-						$number_of_rows = $result->fetchColumn(); 
-						$x = 20;
-						$n = isset($_GET['page']) ? (int)$_GET['page'] : 0;
 						$sql = "SELECT id, title, location, date, link
 							 FROM demo ORDER BY date DESC LIMIT ".($x * $n).", $x";
 						$stmt = $dbc->prepare($sql);
@@ -76,14 +62,9 @@ require_once 'dbconfig.php';
        		         			    echo "<tr><td><a href=" . $row['link']. ">".$row['title'] . "</a></td><td>" . $row['location'] . "</td></tr>";
 						}
 						$dbc=null;
-						if($n != 0) {
-							echo('<a href="?page='.($n-1).'">Previous |</a>');
-						}
-						if (($n+1) * $x < $number_of_rows) {
-							echo('<a href="?page='.($n+1).'">Next</a>');
-						}
 					?>
 					</table>
+					<?php include('prev_next.php'); ?>
 				</div>
 			</section>
 			<div id="go_to">
@@ -97,5 +78,4 @@ require_once 'dbconfig.php';
 				</a>
 			</aside>
 		</div>
-	</body>
-</html>
+<?php include('footer.php');?>
