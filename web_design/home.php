@@ -20,32 +20,39 @@ require_once 'dbconfig.php';
 			<div id="nav">
 			<?php
 				if($user->is_loggedin()!="")
-				{ 
-				 echo '
-					<form method="post" name="logout" action="logout.php">
-  					<input type="submit" value="Log Out"/>
-					</form>
-					<p>Username:';?><?php echo $username;?><?php echo '</p>
-					<p>My tags:</p>
-					<form name="tags">
-						<ul><br>
-								<li><input type="checkbox" name="option1" value="Tag1" checked>Tag1<br></li>
-								<li><input type="checkbox" name="option2" value="Tag2" checked>Tag2<br></li>
-								<li><input type="checkbox" name="option3" value="Tag3" checked>Tag3<br></li>
-							<br>
-						</ul>
-					</form>
-					<button type="submit">Change password</button>
-				';
+					{ 
+					 echo '
+						<form method="post" name="logout" action="logout.php">
+  							<input type="submit" value="Log Out"/>
+						</form>
+						<br>
+						<p>Username:';?><?php echo $username;?><?php echo '</p>
+						<br>
+						<p>My tags:</p>
+						<form name="tags">
+							<ul>
+								<input type="checkbox" name="option1" value="Tag1" checked>Tag1<br>
+								<input type="checkbox" name="option2" value="Tag2" checked>Tag2<br>
+								<input type="checkbox" name="option3" value="Tag3" checked>Tag3<br>
+							</ul>
+						</form>
+						<br>
+						<form method="post" name="change" action="logout.php">
+  							<input type="submit" value="Change password"/>
+						</form>
+						<br>
+					';
 				} else {
-				echo '
-				<form action="login.php">
-  					<input type="submit" value="Log In"/>
-				</form>
-				<form action="register.php">
-  					<input type="submit" value="Register"/>
-				</form>
-				';
+					echo '
+						<form action="login.php">
+  							<input type="submit" value="Log In"/></br>
+						</form>
+						<br>
+						<form action="register.php">
+  							<input type="submit" value="Register"/>
+						</form>
+						<br>
+					';
 				}
 			?>
 			</div>
@@ -55,10 +62,10 @@ require_once 'dbconfig.php';
 				<div id="page-wrap">
 					<table id="Start">
 					<?php
-			                    $stmt = $dbc->prepare("SELECT description, title, location, date, link FROM demo LIMIT 10");
-       		         		    $stmt->execute();
+						$stmt = $dbc->prepare("SELECT description, title, location, date, link FROM demo LIMIT 10");
+						$stmt->execute();
 						$result = $stmt->fetchAll();
-       		         		    foreach ($result as $row){
+       		         			foreach ($result as $row){
        		         			    echo "<tr><td>" . $row['title'] . "</td><td>" . $row['location'] . "</td><td>" . $row['link'] . "</td></tr>";
 						}
 						$dbc=null;//close MySQL connection
