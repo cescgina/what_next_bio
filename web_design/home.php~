@@ -24,7 +24,6 @@ require_once 'dbconfig.php';
   							<input type="submit" value="Log Out"/>
 						</form>
 						<br>
-						<p>Username?<br>';?><?php echo $_SESSION['username']; '</p><br>
 						<p>My tags:</p>
 						<form name="tags">
 							<ul>
