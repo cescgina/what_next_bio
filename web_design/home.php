@@ -11,15 +11,17 @@ require_once 'dbconfig.php';
 	
 	<body>
 		<div id="head">
-			<header>
-				<h1 id="title">WhatNextBio!</h1>
-				<h2 id="subtitle">Your go-to resource for PhD and postgrad offers</h2>
-			</header>
+			<div id="head-text">
+				<header>
+					<h1 id="title">WhatNextBio!</h1>
+					<h2 id="subtitle">Your go-to resource for PhD and postgrad offers</h2>
+				</header>
+			</div>
 			<div id="nav">
-<?php
-if($user->is_loggedin()!="")
-{ 
-echo '
+			<?php
+				if($user->is_loggedin()!="")
+				{ 
+				 echo '
 					<form method="post" name="logout" action="logout.php">
   					<input type="submit" value="Log Out"/>
 					</form>
@@ -34,42 +36,36 @@ echo '
 						</ul>
 					</form>
 					<button type="submit">Change password</button>
-';
-} else {
-echo '
+				';
+				} else {
+				echo '
 				<form action="login.php">
   					<input type="submit" value="Log In"/>
 				</form>
 				<form action="register.php">
   					<input type="submit" value="Register"/>
 				</form>
-';
-}
-?>
+				';
+				}
+			?>
 			</div>
 		</div>
 		<div id ="page">
 			<section>
-				<p id="Start">News go here</p>
 				<div id="page-wrap">
-				<table>
-				<?php
-                    $stmt = $dbc->prepare("SELECT description, title, location, date, link FROM demo LIMIT 10");
-                    $stmt->execute();
-					$result = $stmt->fetchAll();
-                    foreach ($result as $row){
-                    echo "<tr><td>" . $row['description'] . "</td><td>" . $row['location'] . "</td></tr>";
-					}
-					echo "</table>";
-					$dbc=null;//close MySQL connection
-				?>
-
-           <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-           <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-           <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+					<table id="Start">
+					<?php
+			                    $stmt = $dbc->prepare("SELECT description, title, location, date, link FROM demo LIMIT 10");
+       		         		    $stmt->execute();
+						$result = $stmt->fetchAll();
+       		         		    foreach ($result as $row){
+       		         			    echo "<tr><td>" . $row['title'] . "</td><td>" . $row['location'] . "</td><td>" . $row['link'] . "</td></tr>";
+						}
+						$dbc=null;//close MySQL connection
+					?>
+					</table>
 				</div>
 			</section>
-
 			<div id="go_to">
 				<a href="#Start">
 					<img src="style/uparrow.png" alt="Go_to_Top" style="width:30px;height:30px;">

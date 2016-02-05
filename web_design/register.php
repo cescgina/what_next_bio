@@ -1,6 +1,5 @@
 <?php
 require_once 'dbconfig.php';
-
 if($user->is_loggedin()!="")
 {
     $user->redirect('home.php');
@@ -27,7 +26,6 @@ if(isset($_POST['register']))
    }
    else if($password=="") {
       $error = "provide password !";
-
    }
    else if(strlen($password) < 8){
       $error = "Password must be at least 8 characters"; 
@@ -69,24 +67,28 @@ if(isset($_POST['register']))
       exit;
   }
 }
-
 ?>
 
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="styles_register.css">
+		<link rel="stylesheet" type="text/css" href="style/style.css">
 		<title>Registration form Whatnext Bio?</title>
 	</head>
 	<body> 
-		<h2>Registration</h2>
-		<form method="post" name="register" action="register.php">
-			<label>Name:</label> <input type="text" name="first_name"><br /><br />
-			<label>Surname: </label><input type="text" name="surname"><br /><br />
-			<label>email: </label><input type="text" name="email"><br /><br />
-			<label>Username: </label><input type="text" name="username"><br /><br />
-			<label>Password(>7 characters):</label><input type="password" name="password"><br /><br />
-			<label>Confirm Password: </label><input type="password" name="conf_password"><br /><br />
-			<input type="submit" name="register" value="Register">
-		</form>
+		<div id="page-wrap">
+			<div id="form-container">
+				<p id="form-title">Registration</p>
+				<form method="post" name="register" action="register.php">
+					<label>Name:</label> <input type="text" name="first_name"><br /><br />
+					<label>Surname: </label><input type="text" name="surname"><br /><br />
+					<label>email: </label><input type="text" name="email"><br /><br />
+					<label>Username: </label><input type="text" name="username"><br /><br />
+					<label>Password(>7 characters):</label><input type="password" name="password"><br /><br />
+					<label>Confirm Password: </label><input type="password" name="conf_password"><br /><br />
+					<input type="submit" name="register" value="Register">
+				</form>
+			</div>
+		</div>
 	</body>
 </html>
+

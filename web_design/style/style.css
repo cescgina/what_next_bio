@@ -14,56 +14,42 @@ body {
 	bottom:0px; 
 }
 
-header {
-	text-align:center;
-}
-
-p { 
-	font: 15px/2 Georgia, Serif; 
-	margin: 0 0 30px 0; 
-	text-indent: 40px; 
-}
-
-#head {
-	width: 100%;
-	height: 100%;
-	background-color:33FFFF;
+#head-text {
 	position: fixed;
+	text-align:center;
+	width: 100%;
+	height: 25%;
 	padding:0px;
 	border-top: 5px solid #282828;
 	border-bottom: 5px solid #282828;
 	top:0px;
-	height: 23%;
-	margin:0px solid;
 	left: 0px;
 	right: 0px;
 	z-index: 2;
+	margin:0px solid;
+	background-color: #66FFFF;
 }
 
 #title {
-	height: 5%;
 	font-family: "Times New Roman", Georgia, Serif;
 	font-size: 300%;
 	color: #780000;
 }
 
 #subtitle {
-	height: 8%;
-	margin-top: 5%;
 	font-family: "Times New Roman", Georgia, Serif;
 	font-size: 200%;
 	color: #808080;
 }
 
 #nav {
-	position: relative;
+	position: fixed;
 	text-align:center;
 	width:15%;
-	top: 11%;
+	height: 71%;
 	padding: 10px;
 	left: 0px;
 	bottom: 0px;
-	height: 400%;
 	background:#A9A9A9;
 	border-right: 5px solid #282828;	
 }
@@ -87,6 +73,36 @@ p {
 	box-shadow: 0 0 20px black; 
 }
 
+#form-container {
+	text-align: center;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-weight: bold;
+
+}
+
+#form-title {
+	text-align: center;
+	font-size: 220%;
+}
+
+label, input {
+    /* in order to define widths */
+    display: inline-block;
+}
+
+label {
+    width: 30%;
+    /* positions the label text beside the input */
+    text-align: right;
+}
+
+label + input {
+    width: 30%;
+    /* large margin-right to force the next element to the new-line
+       and margin-left to create a gutter between the label and input */
+    margin: 0 30% 0 4%;
+}
+
 section {
 	float:center;
 	padding:10px;
@@ -100,40 +116,9 @@ section {
 	left:49%;
 }
 
-.vspace {
-	margin-top: 5%;
-}
-
-.vspace2 {
-	margin-left: 10px;
-	margin-top: 5px;
-}
-
 aside {
 	width:15%;
 	float:right;
 	margin-right: 18%;
 	padding:10px;
-}
-
-
-
-/* FONT */
-
-/* Font styles */
-p.normal {
-    font-style: normal;
-}
-
-p.italic {
-    font-style: italic;
-}
-
-p.oblique {
-    font-style: oblique;
-}
-
-/* Font types */
-p.sansserif {
-    font-family: "Times New Roman", Georgia, Serif;
 }
