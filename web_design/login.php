@@ -19,15 +19,9 @@ if(isset($_POST['login']))
   $error = "Wrong Details !";
  } 
 }
+include('header.php');
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<link type="text/css" rel="stylesheet" href="style/style.php">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Login form Whatnext Bio?</title>
-</head>
-	<body>
+		</div>
 		<div id="page-wrap">
 			<div id="form-container">
 				<p id="form-title">Sign in</p>
@@ -41,5 +35,4 @@ if(isset($_POST['login']))
 				</form>
 			</div>
 		</div>
-	</body>
-</html>
+<?php include('footer.php');?>
