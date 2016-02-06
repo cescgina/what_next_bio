@@ -41,8 +41,8 @@
             $affeccted_rows=$stmt->rowCount();
             if ($affeccted_rows == 0){
                //$stmteur = $db->prepare("INSERT INTO jobs(title,link,description,date) VALUES(:title,:link,:description,:date)");
-               $stmteur = $db->prepare("INSERT INTO demo(title,link,description,location,date) VALUES(:title,:link,:description,:location,:date)");
-            $stmteur->execute(array(':title' => $itemeur->title, ':link' => $itemeur->link,':description'=> $itemeur->description,':location'=>$institution, ':date'=> date("Y/m/d")));
+               $stmteur = $db->prepare("INSERT INTO demo(title,link,description,location,date,stage) VALUES(:title,:link,:description,:location,:date,:stage)");
+            $stmteur->execute(array(':title' => $itemeur->title, ':link' => $itemeur->link,':description'=> $itemeur->description,':location'=>$institution, ':date'=> date("Y/m/d"),':stage'=>$stage));
             }
             else{
                 continue;
@@ -79,8 +79,8 @@
             $affeccted_rows=$stmt->rowCount();
             if ($affeccted_rows == 0){
                //$stmtsci = $db->prepare("INSERT INTO jobs(title,link,description,date) VALUES(:title,:link,:description,:date)");
-               $stmtsci = $db->prepare("INSERT INTO demo(title,link,description,location,date) VALUES(:title,:link,:description,:location,:date)");
-                $stmtsci->execute(array(':title' => $ititle, ':link' => $itemsci->link,':description'=> $desc, ':location'=>$location,':date'=> date("Y/m/d")));
+               $stmtsci = $db->prepare("INSERT INTO demo(title,link,description,location,date,stage) VALUES(:title,:link,:description,:location,:date,:stage)");
+                $stmtsci->execute(array(':title' => $ititle, ':link' => $itemsci->link,':description'=> $desc, ':location'=>$location,':date'=> date("Y/m/d"),':stage'=>$stage));
             }
             else{
                 continue;
