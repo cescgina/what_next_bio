@@ -1,15 +1,13 @@
-# what_next_bio
-
+# WhatNextBio!
+=============
 This is the repository for the code of the WhatNextBio project
 
-Authors
------------------
+###Authors
 
 Adria, Ariadna, Felipe, Joan Francesc and Marc
 
-To-do list
-----------
+###To-do list
 * Input validation (non-empty input, avoid SQL injections...)
-* Use login data in home.php
 * Proper error displaying
 * Unify webdesign for all pages
+* Parse euraxess title to find location for jobs

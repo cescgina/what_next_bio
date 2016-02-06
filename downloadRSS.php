@@ -34,6 +34,7 @@
                 $pos_org++;
             }
             $appdeadline=preg_replace("/.*Application.*:\s+/","",$desca[$pos_org]);
+            $stage="PHD";
            // $stmt = $db->prepare("SELECT link FROM jobs WHERE link=:link");
             $stmt = $db->prepare("SELECT link FROM demo WHERE link=:link");
             $stmt->execute(array(':link'=>$itemeur->link));
@@ -60,6 +61,17 @@
             if ($desc[count($desc)-1] != "."){
                 $desc .= "...";
             }
+            $title_check=strtolower($title);
+            $pattern="/post-?doc/";
+            if (preg_match($pattern,$title_check)){
+                $stage='postdoc';
+            }
+            else if (preg_match("/phd/",$title_check) or preg_match("/studen/",$title_check)){
+                $stage='PHD';
+            }
+            else {
+                $stage='other';
+            }
 
             //$stmt = $db->prepare("SELECT link FROM jobs WHERE link=:link");
             $stmt = $db->prepare("SELECT link FROM demo WHERE link=:link");
@@ -68,7 +80,7 @@
             if ($affeccted_rows == 0){
                //$stmtsci = $db->prepare("INSERT INTO jobs(title,link,description,date) VALUES(:title,:link,:description,:date)");
                $stmtsci = $db->prepare("INSERT INTO demo(title,link,description,location,date) VALUES(:title,:link,:description,:location,:date)");
-                $stmtsci->execute(array(':title' => $itemsci->title, ':link' => $itemsci->link,':description'=> $desc, ':location'=>$location,':date'=> date("Y/m/d")));
+                $stmtsci->execute(array(':title' => $ititle, ':link' => $itemsci->link,':description'=> $desc, ':location'=>$location,':date'=> date("Y/m/d")));
             }
             else{
                 continue;
@@ -80,7 +92,6 @@
     $rssnat = simplexml_load_file($urlnat);
 
     foreach($rssnat->channel->item as $itemnat) {
-        
             $stmt = $db->prepare("SELECT link FROM jobs WHERE link=:link");
             $stmt->execute(array(':link'=>$itemnat->link));
             $affeccted_rows=$stmt->rowCount();
