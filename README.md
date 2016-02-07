@@ -11,3 +11,4 @@ Adria, Ariadna, Felipe, Joan Francesc and Marc
 * Proper error displaying
 * Unify webdesign for all pages
 * Parse euraxess title to find location for jobs
+* Add behaviour for favourite button
