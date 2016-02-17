@@ -1,12 +1,25 @@
 <?php
-require_once 'dbconfig.php';
+    $DB_user = "dbw09";
+    $pass ="dbw2016";
+    $host="localhost";
+    //$host="mmb.pcb.ub.es:13306";
+    $dbname="DBW09";
+
+    try {
+		$dbc = new PDO('mysql:host='.$host.';dbname='.$dbname,$DB_user,$pass); /*db name*/
+		$dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	}
+	catch(PDOException $e) {
+		echo $e->getMessage();
+	}
 
 $category_list=array("Microbiology","Biochemistry","Biomedicine","Biotechnology","Genetics","Environmental","Bioinformatics","Biophysics");
 $categories=array();
 foreach ($category_list as $cat){
-    $temp_arr = explode(",",file_get_contents($cat."txt"));
+    $temp_arr = explode(",",file_get_contents($cat.".txt"));
     $categories[$cat] = $temp_arr;
 }
+
 try {
 	$stmt=$dbc->prepare("SELECT link, title, description FROM demo");
     $stmt->execute();
