@@ -1,0 +1,3 @@
+Genetic tags:
+
+sequence,gene,traduction,translation,genotype,phenotype,chromosome,chromatin,transcript,mutant,polymorphism,SNP,variability,biodiversity,heredity,nuclear,mitochondria,coding,noncoding,haplotype,UTR,promoter,enhancer,loci,locus,marker,epigenetic,microsatellite, minisatellite,methyl,transposome,counseling,RFLP,GWAS,long terminal repeat,LTR,short tandem repeat,STR,VNTR,
