@@ -5,7 +5,12 @@
     $pass = "dbw2016";
     $dbname = "DBW09";
     $db = new PDO('mysql:host='.$host.';dbname='.$dbname.';charset=utf8', $user, $pass);
-    
+    $category_list=array("Microbiology","Biochemistry","Biomedicine","Biotechnology","Genetics","Environmental","Bioinformatics","Biophysics");
+    $categories=array();
+    foreach ($category_list as $cat){
+        $temp_arr = explode(",",file_get_contents("tag_searchlists/".$cat.".txt"));
+        $categories[$cat] = $temp_arr;
+    }
 
     date_default_timezone_set('Europe/Madrid');
     $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n"));//not sure what does, without it BAD GATEWAY error
@@ -43,6 +48,23 @@
                //$stmteur = $db->prepare("INSERT INTO jobs(title,link,description,date) VALUES(:title,:link,:description,:date)");
                $stmteur = $db->prepare("INSERT INTO demo(title,link,description,location,date,stage) VALUES(:title,:link,:description,:location,:date,:stage)");
             $stmteur->execute(array(':title' => $itemeur->title, ':link' => $itemeur->link,':description'=> $itemeur->description,':location'=>$institution, ':date'=> date("Y/m/d"),':stage'=>$stage));
+                foreach ($categories as $key => $value){
+                    foreach($value as $word){
+                        $word = strtolower($word);
+                        if ( preg_match("/".$word."/",strtolower($itemeur->title)) or preg_match("/".$word."/",strtolower($itemeur->description))){
+                        try {
+                           $stmin = $dbc->prepare("INSERT INTO offer_tags(link,tag) VALUES(:link,:tag)");
+                            $stmin->bindParam(':link',$itemeur->link);
+                            $stmin->bindParam(':tag',$key);
+                            $stmin->execute(); 
+                        }
+                        catch(PDOException $e){
+                            echo $e->getMessage();
+                        }
+                        break;
+                        }
+                    }
+                }
             }
             else{
                 continue;
@@ -81,6 +103,23 @@
                //$stmtsci = $db->prepare("INSERT INTO jobs(title,link,description,date) VALUES(:title,:link,:description,:date)");
                $stmtsci = $db->prepare("INSERT INTO demo(title,link,description,location,date,stage) VALUES(:title,:link,:description,:location,:date,:stage)");
                 $stmtsci->execute(array(':title' => $ititle, ':link' => $itemsci->link,':description'=> $desc, ':location'=>$location,':date'=> date("Y/m/d"),':stage'=>$stage));
+                foreach ($categories as $key => $value){
+                    foreach($value as $word){
+                        $word = strtolower($word);
+                        if ( preg_match("/".$word."/",strtolower($itemsci->title)) or preg_match("/".$word."/",strtolower($itemsci->description))){
+                        try {
+                           $stmin = $dbc->prepare("INSERT INTO offer_tags(link,tag) VALUES(:link,:tag)");
+                            $stmin->bindParam(':link',$itemsci->link);
+                            $stmin->bindParam(':tag',$key);
+                            $stmin->execute(); 
+                        }
+                        catch(PDOException $e){
+                            echo $e->getMessage();
+                        }
+                        break;
+                        }
+                    }
+                }
             }
             else{
                 continue;
