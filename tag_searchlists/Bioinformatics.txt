@@ -1,0 +1,1 @@
+Bioinformatics,informat,comput,omics,data analysis,drug discovery,network,statistic,optimization,validation
