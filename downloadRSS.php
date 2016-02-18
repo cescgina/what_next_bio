@@ -53,7 +53,7 @@
                         $word = strtolower($word);
                         if ( preg_match("/".$word."/",strtolower($itemeur->title)) or preg_match("/".$word."/",strtolower($itemeur->description))){
                         try {
-                           $stmin = $dbc->prepare("INSERT INTO offer_tags(link,tag) VALUES(:link,:tag)");
+                           $stmin = $db->prepare("INSERT INTO offer_tags(link,tag) VALUES(:link,:tag)");
                             $stmin->bindParam(':link',$itemeur->link);
                             $stmin->bindParam(':tag',$key);
                             $stmin->execute(); 
@@ -102,13 +102,13 @@
             if ($affeccted_rows == 0){
                //$stmtsci = $db->prepare("INSERT INTO jobs(title,link,description,date) VALUES(:title,:link,:description,:date)");
                $stmtsci = $db->prepare("INSERT INTO demo(title,link,description,location,date,stage) VALUES(:title,:link,:description,:location,:date,:stage)");
-                $stmtsci->execute(array(':title' => $ititle, ':link' => $itemsci->link,':description'=> $desc, ':location'=>$location,':date'=> date("Y/m/d"),':stage'=>$stage));
+                $stmtsci->execute(array(':title' => $title, ':link' => $itemsci->link,':description'=> $desc, ':location'=>$location,':date'=> date("Y/m/d"),':stage'=>$stage));
                 foreach ($categories as $key => $value){
                     foreach($value as $word){
                         $word = strtolower($word);
                         if ( preg_match("/".$word."/",strtolower($itemsci->title)) or preg_match("/".$word."/",strtolower($itemsci->description))){
                         try {
-                           $stmin = $dbc->prepare("INSERT INTO offer_tags(link,tag) VALUES(:link,:tag)");
+                           $stmin = $db->prepare("INSERT INTO offer_tags(link,tag) VALUES(:link,:tag)");
                             $stmin->bindParam(':link',$itemsci->link);
                             $stmin->bindParam(':tag',$key);
                             $stmin->execute(); 
