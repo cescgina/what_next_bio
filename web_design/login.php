@@ -16,7 +16,7 @@ if(isset($_POST['login']))
  }
  else
  {
-  $error = "Wrong Details !";
+  header('Location: error_page.php?link=login.php&error=Incorrect username or password. Please try again.');
  } 
 }
 include('header.php');

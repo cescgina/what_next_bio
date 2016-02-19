@@ -16,22 +16,22 @@ if(isset($_POST['register']))
    $password = trim($_POST['password']); 
    $confirmpass=trim($_POST['conf_password']);
    if($username=="") {
-      $error = "provide username !"; 
+      header('Location: error_page.php?link=register.php&error=Please provide username!');
    }
    else if($email=="") {
-      $error = "provide email !"; 
+      header('Location: error_page.php?link=register.php&error=Please provide a valid email');
    }
    else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $error = 'Please enter a valid email address !';
+      header('Location: error_page.php?link=register.php&error=Please enter a valid email address!');
    }
    else if($password=="") {
-      $error = "provide password !";
+      header('Location: error_page.php?link=register.php&error=Please provide a password!');
    }
    else if(strlen($password) < 8){
-      $error = "Password must be at least 8 characters"; 
+      header('Location: error_page.php?link=register.php&error=Password must be at least 8 characters!');
    }
     else if ($password !== $confirmpass){
-        $error="Password and confirmed password do not match ";
+        header('Location: error_page.php?link=register.php&error=Password and confirmation password do not match!');
     }
    else
    {
@@ -42,10 +42,10 @@ if(isset($_POST['register']))
          $row=$stmt->fetch(PDO::FETCH_ASSOC);
     
          if($row['username']==$username) {
-            $error = "Username already taken !";
+            header('Location: error_page.php?link=register.php&error=Username already taken! Please introduce another one.');
          }
          else if($row['email']==$email) {
-            $error = "A user with this email address has already been registered !";
+            header('Location: error_page.php?link=register.php&error=An user with this email address has already been registered!');
          }
          else
          {
@@ -60,12 +60,12 @@ if(isset($_POST['register']))
         echo $e->getMessage();
      }
   }
-  if(isset($error)){
+  /*if(isset($error)){
       echo "There has been an error";
       echo "<br>";
       echo $error;
       exit;
-  }
+  }*/
 }
 include('header.php');
 ?>
