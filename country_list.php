@@ -4,7 +4,8 @@ $pass ="dbw2016";
 //$host="localhost";
 $host="mmb.pcb.ub.es:13306";
 $dbname="DBW09";
-
+/*table name = countries
+ fields = AbbrName & FullName*/
 $dbc = new PDO('mysql:host='.$host.';dbname='.$dbname,$DB_user,$pass);
 $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	
