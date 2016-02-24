@@ -81,6 +81,9 @@ include('header.php');
                                     echo '</form>';
                                 }
                             }
+                            elseif (isset($_SESSION['listoffers'])){
+                                
+                            }
                             else {
                                 $sql = "SELECT title, location, date, link
                                  FROM demo ORDER BY date DESC LIMIT ".($x * $n).", $x";

@@ -4,9 +4,6 @@ if($user->is_loggedin()!="")
 {
     $user->redirect('home.php');
 }
-if (isset($_REQUEST['joined'])){
-    header('Location: home.php');
-}
 if(isset($_POST['register']))
 {
    $first_name = trim($_POST['first_name']);
@@ -51,7 +48,7 @@ if(isset($_POST['register']))
          {
             if($user->register($first_name,$surname,$username,$email,$password)) 
             {
-                $user->redirect('register.php?joined');
+                $user->redirect('preferences_form.php');
             }
          }
      }
