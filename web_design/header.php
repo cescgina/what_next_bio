@@ -25,7 +25,11 @@
 						<form method="post" name="change" action="logout.php">
   							<input class="Button" type="submit" value="Change password"/>
 						</form>
-						<br>    
+						<br>
+						<form method="post" name="my_prefs" action="preferences_form.php">
+  							<input class="Button" type="submit" value="Change Preferences"/>
+						</form>
+						<br>       
 					';
 				} else {
 					echo '
