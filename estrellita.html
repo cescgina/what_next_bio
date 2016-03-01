@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">
+</script>
+<script>
+function addFav(){
+    $.ajax({
+      url: "/favorites/add",
+      data: {"id": articleID},
+      success: function(){
+           $('a#fav')
+                 .addClass('active')
+                 .attr('title','[-] Remove from favorites')
+                 .unbind('click')
+                 .bind('click', removeFav)
+           ;
+      }
+    });
+}
+
+function removeFav(){
+    $.ajax({
+      url: "/favorites/remove",
+      data: {"id": articleID},
+      success: function(){
+            $('a#fav')
+                 .removeClass('active')
+                 .attr('title','[+] Add as favorite')
+                 .unbind('click')
+                 .bind('click', addFav)
+            ;
+      }
+    });
+}
+
+//this will make the link listen to function addFav (you might know this already)
+$('a#fav').bind('click', addFav);
+
+</script>
+<style>
+
+a#fav{
+ background: url('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRGPjyYFcrIexUzp64Tsmm98MDeRvUYgjC9CyHawBJHfpVqwN86OwEbBA2k');
+ display: block;
+ width: 48px;
+ height: 48px;
+
+}
+
+a#fav.active{
+ background: url('http://findicons.com/files/icons/767/wp_woothemes_ultimate/128/star.png');
+}
+</style>
+
+</head>
+
+<body>
+
+  <a href="#" id="fav" title="[+] Add as favorite">&nbsp;</a>
+
+</body>
