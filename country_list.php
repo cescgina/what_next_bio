@@ -305,7 +305,11 @@ echo '<pre>';
 $list2 = explode("\n",$list);
 while (isset($list2[$i])==true){
     $list3 = explode('|',$list2[$i]);
-	$sql = "INSERT INTO countries (AbbrName, FullName) VALUES (".$list3[0].",".$list3[1].")";
+	$sql = "INSERT INTO countries (AbbrName, FullName) VALUES (:abbr,:fullname)";
+    $stmt=$dbc->prepare($sql);
+    $stmt->bindParam("abbr",$list3[0]);
+    $stmt->bindParam("fullname",$list3[1]);
+    $stmt->execute();
 	$i=$i+1;
 }
 
