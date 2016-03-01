@@ -71,12 +71,12 @@ include('header.php');
 			<div id="form-container">
 				<p id="form-title">Registration</p>
 				<form method="post" name="register" action="register.php">
-					<label>Name:</label> <input type="text" name="first_name"><br /><br />
-					<label>Surname: </label><input type="text" name="surname"><br /><br />
-					<label>email: </label><input type="text" name="email"><br /><br />
-					<label>Username: </label><input type="text" name="username"><br /><br />
-					<label>Password(>7 characters):</label><input type="password" name="password"><br /><br />
-					<label>Confirm Password: </label><input type="password" name="conf_password"><br /><br />
+					<label>Name:</label> <input type="text" name="first_name" required><br /><br />
+					<label>Surname: </label><input type="text" name="surname" required><br /><br />
+					<label>email: </label><input type="text" name="email" required><br /><br />
+					<label>Username: </label><input type="text" name="username" required><br /><br />
+					<label>Password(>7 characters):</label><input type="password" name="password" required><br /><br />
+					<label>Confirm Password: </label><input type="password" name="conf_password" required><br /><br />
 					<input type="submit" name="register" value="Register">
 				</form>
 			</div>

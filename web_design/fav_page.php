@@ -38,7 +38,7 @@ else {
     echo '<input class="Button" type="submit" value="Remove Favourites"/>';
     echo '</form>';
     echo '<form name="back" action="home.php">';
-    echo '<input class="Button" type="submit" value="Back to main list">';
+    echo '<input class="Button" type="submit" value="Show me everything!">';
     echo '</form>';
 }
 ?>

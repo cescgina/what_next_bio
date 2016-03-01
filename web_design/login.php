@@ -12,7 +12,17 @@ if(isset($_POST['login']))
   
  if($user->login($username,$email,$password))
  {
-  $user->redirect('home.php');
+     $scheck=$dbc->prepare("SELECT position FROM users WHERE username=:user");
+     $scheck->execute(array("user"=>$_SESSION['username']));
+     $posuser=$scheck->fetchAll();
+     if ($posuser[0]['position'] == NULL){
+         $user->redirect('preferences_form.php');
+     }
+     else{
+         var_dump($posuser[0]['position']);
+         exit;
+         $user->redirect('home.php');
+    }
  }
  else
  {

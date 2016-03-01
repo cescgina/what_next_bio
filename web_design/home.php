@@ -62,7 +62,10 @@ include('header.php');
                             if (isset($_REQUEST['fav'])){
                                header("Location: fav_page.php");
                             }
-                            else {
+                            elseif (isset($_REQUEST['tags'])) {
+                                header("Location: tags_page.php");
+                            }
+                            else{
                                 $sql = "SELECT title, location, date, link
                                  FROM demo ORDER BY date DESC LIMIT ".($x * $n).", $x";
                                 $stmt = $dbc->prepare($sql);
