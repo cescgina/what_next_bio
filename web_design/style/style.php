@@ -287,7 +287,7 @@ section {
 	float:center;
 	padding:10px;
 	text-align:center;
-	font-family: $font2;
+	font-family: $font;
 }
 
 #go_to {
@@ -301,6 +301,26 @@ aside {
 	float:right;
 	margin-right: 18%;
 	padding:10px;
+}
+
+table {
+	text-align: left;
+	font-family: $font2;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+tr:hover {
+    background-color:#e0e0d1 ;
+} 
+
+/* Apply padding to td elements that are direct children of the tr element. */
+tr.spaceUnder > td
+{
+  padding-bottom: 1em;
 }
 
 CSS;

@@ -303,11 +303,12 @@ XX|Wisconsin
 XX|Wyoming';
 echo '<pre>';
 $list2 = explode("\n",$list);
+$i=0;
 while (isset($list2[$i])==true){
     $list3 = explode('|',$list2[$i]);
 	$sql = "INSERT INTO countries (AbbrName, FullName) VALUES (:abbr,:fullname)";
     $stmt=$dbc->prepare($sql);
-    $stmt->bindParam("abbr",$list3[0]);
+    $stmt->bindParam("abbr",$list3[0]); /*bind variable from INSERT to our variable*/
     $stmt->bindParam("fullname",$list3[1]);
     $stmt->execute();
 	$i=$i+1;

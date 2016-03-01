@@ -84,7 +84,7 @@ include('header.php');
                             $stmt->execute();
                             $result = $stmt->fetchAll();
                             foreach ($result as $row){
-                                        echo "<tr><td><a href=" . $row['link']. ">".$row['title'] . "</a></td><td>" . $row['location'] . "</td></tr>";
+                                        echo "<tr class='spaceUnder'><td><a href=" . $row['link']. ">".$row['title'] . "</a></td><td>" . $row['location'] . "</td></tr>";
                             }
                         }
 						$dbc=null;
