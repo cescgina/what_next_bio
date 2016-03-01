@@ -48,7 +48,7 @@ if(isset($_POST['register']))
          {
             if($user->register($first_name,$surname,$username,$email,$password)) 
             {
-                $user->redirect('preferences_form.php');
+                $user->redirect('home.php');
             }
          }
      }
