@@ -20,7 +20,7 @@ if ($stags->rowCount()>0){
     }
 }
 //Query based on the user-specific information
-$query = "SELECT t1.link,t1.title,t1.location FROM ( SELECT * from demo WHERE stage=:stage) as t1";
+$query = "SELECT DISTINCT (t1.link),t1.title,t1.location FROM ( SELECT * from demo WHERE stage=:stage) as t1";
 if ($tags){
     $query .= " join ( SELECT * FROM offer_tags WHERE tag=:tag0";
     for ($i=1;$i<count($tags);$i++){
