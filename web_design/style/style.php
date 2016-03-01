@@ -8,6 +8,7 @@ $border_height = 5;
 $nav_width = 150;
 $header_top = $header_height.'px';
 $margin_border = $border_height.'px';
+$horizontal_margin = ($nav_width + $margin_border).'px';
 $header_top2 = ($header_height + ($border_height*2)).'px';
 $nav_bar_width = $nav_width.'px';
 
@@ -57,7 +58,6 @@ body {
 	left: 0px;
 	right: 0px;
 	z-index: 2;
-	margin:0px solid;
 	background-color: $head_color;
 }
 
@@ -85,6 +85,32 @@ body {
 	bottom: 0px;
 	background:$nav_color;
 	border-right: $margin_border solid $margin_color;	
+}
+
+#horizontal_bar {
+	list-style-type: none;
+	margin-left: $horizontal_margin;
+	margin-top: 20px;
+	padding-left: 18%;
+	width: 100%;
+	overflow: hidden;
+	background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
 }
 
 #page {

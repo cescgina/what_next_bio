@@ -55,19 +55,6 @@ $result = $stmt->fetchAll();
 //result contains the list of offers that conform to the user specifications
 include('header.php');
 ?>
-<div id="nav">
-<p>Username:</p><p><?php echo $_SESSION['username'];?>
-<?php echo '</p>
-    <form method="post" name="logout" action="logout.php">
-        <input class="Button" type="submit" value="Log Out"/>
-    </form>
-    <br>
-    <form method="post" name="change" action="logout.php">
-        <input class="Button" type="submit" value="Change password"/>
-    </form>';
-?>
-</div>
-</div>
 <p id="Start"></p>
 		<div id ="page">
 			<section>
@@ -85,9 +72,6 @@ else {
                 echo "<tr><td><a href=''><img style=' with:25px; height:25px;' src='http://findicons.com/files/icons/767/wp_woothemes_ultimate/128/star.png'></a><input type='checkbox' name='links[]' value='" . $row['link'] . "'></td><td><a href=" . $row['link']. ">".$row['title'] . "</a></td><td>" . $row['location'] . "</td></tr>";
     }
     echo '<input class="Button" type="submit" value="Add Favourites"/>';
-    echo '</form>';
-    echo '<form name="back" action="home.php">';
-    echo '<input class="Button" type="submit" value="Show me everything!">';
     echo '</form>';
 }
 ?>

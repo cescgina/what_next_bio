@@ -2,60 +2,11 @@
 require_once 'dbconfig.php';
 include('header.php');
 ?>
-
-			<div id="nav">
-			<?php
-				if($user->is_loggedin()!="")
-					{ 
-					 echo '
-						<p>Username:</p><p>';?><?php echo $_SESSION['username'];?><?php echo '</p>
-						<form method="post" name="logout" action="logout.php">
-  							<input class="Button" type="submit" value="Log Out"/>
-						</form>
-						<br>
-						<form method="post" name="change" action="logout.php">
-  							<input class="Button" type="submit" value="Change password"/>
-						</form>
-						<br>
-                        <form action="fav_page.php" method="POST" >
-                            <input class="Button" type="submit" name="fav" value="My favourites"/>
-						</form>
-						<br>
-						<div class="dropdown">
-							<button class="dropbtn">My tags</button>
-							<div class="dropdown-content">
-								<form name="tags">
-									<input type="checkbox" name="option1" value="Tag1" checked>Bioinformatics<br>
-									<input type="checkbox" name="option2" value="Tag2" checked>Tag2<br>
-									<input type="checkbox" name="option3" value="Tag3" checked>Tag3<br>
-								</form>
-  							</div>
-						</div>
-                        
-
-					';
-				} else {
-					echo '
-						<br>
-						<form action="login.php">
-  							<input class="Button" type="submit" value="Log In"/></br>
-						</form>
-						<br>
-						<form action="register.php">
-  							<input class="Button" type="submit" value="Register"/>
-						</form>
-						<br>
-					';
-				}
-			?>
-			</div>
-		</div>
 		<p id="Start"></p>
 		<div id ="page">
 			<section>
 				<?php include('row_count.php'); ?>
 				<div id="page-wrap">
-					<?php include('prev_next.php'); ?>
 					<table>
 					<?php             
                         if (isset($_SESSION['username'])){
@@ -71,7 +22,6 @@ include('header.php');
                                 $stmt = $dbc->prepare($sql);
                                 $stmt->execute();
                                 $result = $stmt->fetchAll();
-
                                 echo '<form name="add_fav" method="POST" action="addfav.php" enctype="">';
                                foreach ($result as $row){
                                             echo "<tr><td><a href=''><img style=' with:25px; height:25px;' src='http://findicons.com/files/icons/767/wp_woothemes_ultimate/128/star.png'></a><input type='checkbox' name='links[]' value='" . $row['link'] . "'></td><td><a href=" . $row['link']. ">".$row['title'] . "</a></td><td>" . $row['location'] . "</td></tr>";
