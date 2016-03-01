@@ -19,9 +19,7 @@ if(isset($_POST['login']))
          $user->redirect('preferences_form.php');
      }
      else{
-         var_dump($posuser[0]['position']);
-         exit;
-         $user->redirect('home.php');
+         $user->redirect('tags_page.php');
     }
  }
  else

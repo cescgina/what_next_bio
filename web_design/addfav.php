@@ -18,5 +18,6 @@ foreach ($_POST['links'] as $link){
                echo $e->getMessage();
         } 
  }
-$user->redirect('home.php');    
+header('Location: ' . $_SERVER['HTTP_REFERER']);
+exit; 
 ?>
