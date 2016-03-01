@@ -18,18 +18,37 @@ body {
     font-family:sans-serif;
 }
 
+
 #ck-button {
-    margin:4px;
-    background-color:#EFEFEF;
-    border-radius:4px;
-    border:1px solid #D0D0D0;
-    overflow:auto;
-    float:left;
+  -moz-box-shadow:inset 0px 1px 0px 0px #fce2c1;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #fce2c1;
+  box-shadow:inset 0px 1px 0px 0px #fce2c1;
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25));
+  background:-moz-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
+  background:-webkit-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
+  background:-o-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
+  background:-ms-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
+  background:linear-gradient(to bottom, #ffc477 5%, #fb9e25 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc477', endColorstr='#fb9e25',GradientType=0);
+  background-color:#ffc477;
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+  border-radius:6px;
+  border:1px solid #eeb44f;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:15px;
+  font-weight:bold;
+  padding:6px 24px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #cc9f52;
 }
 
 #ck-button label {
     float:left;
-    width:4.0em;
+    width:10.0em;
 }
 
 #ck-button label span {
@@ -41,21 +60,43 @@ body {
 
 #ck-button label input {
     position:absolute;
-    top:-20px;
+    top:20px;
 }
 
-#ck-button input:hover + span {
-    background-color:#efE0E0;
+#ck-buttom: input:hover + span {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477));
+  background:-moz-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+  background:-webkit-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+  background:-o-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+  background:-ms-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+  background:linear-gradient(to bottom, #fb9e25 5%, #ffc477 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477',GradientType=0);
+  background-color:#fb9e25;
 }
 
 #ck-button input:checked + span {
-    background-color:#911;
-    color:#fff;
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477));
+  background:-moz-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+  background:-webkit-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+  background:-o-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+  background:-ms-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+  background:linear-gradient(to bottom, #fb9e25 5%, #ffc477 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477',GradientType=0);
+  background-color:#fb9e25
 }
-
 #ck-button input:checked:hover + span {
-    background-color:#c11;
-    color:#fff;
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477));
+  background:-moz-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+  background:-webkit-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+  background:-o-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+  background:-ms-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+  background:linear-gradient(to bottom, #fb9e25 5%, #ffc477 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477',GradientType=0);
+  background-color:#fb9e25;
+}
+.ck-buttom:active {
+  position:relative;
+  top:1px;
 }
 
 </style>
@@ -71,6 +112,41 @@ body {
                <div id="ck-button">
                  <label>
                    <input type="checkbox" name="tag" value="biomed"><span>Biomedicine</span>
+                 </label>
+               </div>
+               <div id="ck-button">
+                 <label>
+                   <input type="checkbox" name="tag" value="biomed"><span>Biomedicine</span>
+                 </label>
+               </div>
+               <div id="ck-button">
+                 <label>
+                   <input type="checkbox" name="tag" value="biomed"><span>Biochemistry</span>
+                 </label>
+               </div>
+               <div id="ck-button">
+                 <label>
+                   <input type="checkbox" name="tag" value="biomed"><span>Bioinformatics</span>
+                 </label>
+               </div>
+               <div id="ck-button">
+                 <label>
+                   <input type="checkbox" name="tag" value="biomed"><span>Biotechnology</span>
+                 </label>
+               </div>
+               <div id="ck-button">
+                 <label>
+                   <input type="checkbox" name="tag" value="biomed"><span>Enviromental</span>
+                 </label>
+               </div>
+               <div id="ck-button">
+                 <label>
+                   <input type="checkbox" name="tag" value="biomed"><span>Microbiology</span>
+                 </label>
+               </div>
+               <div id="ck-button">
+                 <label>
+                   <input type="checkbox" name="tag" value="biomed"><span>Genetics</span>
                  </label>
                </div>
                <label for="biomed">Biomedicine</label> <input type="checkbox" name="tag[]" id="biomed" value="Biomedicine">
