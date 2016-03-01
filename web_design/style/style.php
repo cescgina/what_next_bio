@@ -91,7 +91,7 @@ body {
 	list-style-type: none;
 	margin-left: $horizontal_margin;
 	margin-top: 20px;
-	padding-left: 18%;
+	padding-left: 25%;
 	width: 100%;
 	overflow: hidden;
 	background-color: #333;
