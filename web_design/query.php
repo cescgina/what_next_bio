@@ -23,7 +23,7 @@ if ($posuser[0]['position'] == NULL and $tags){
 else {
     //User has already specified preferences and is updating them
     $stag=$dbc->prepare("DELETE FROM user_tag WHERE username=:user");
-    $stag->execute(array("username"=>$_SESSION['username']));
+    $stag->execute(array("user"=>$_SESSION['username']));
     if ($tags){
         foreach($tags as $tagval){
             $snewtag=$dbc->prepare("INSERT INTO user_tag (username,tag) VALUES (:user,:tag)");
