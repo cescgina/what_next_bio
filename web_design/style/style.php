@@ -116,16 +116,16 @@ li a:hover {
 #page {
 	width: 100%;
 	height: 500px;
+	margin: 50px auto;
+	top: 200px;
 	position: absolute;
 	z-index: 1;
 }
 
 #page-wrap { 
 	width: 50%;
-	margin: 50px auto;
 	margin-left: 30%;
 	margin-right: 30%;
-	margin-top: 200px;
 	float: right;
 	float: left;
 	padding: 20px;

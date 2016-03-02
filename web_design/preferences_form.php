@@ -20,6 +20,7 @@ body {
 
 </style>
 </div>
+<div id="page">
  <div id="page-wrap">
    <div id="form-container">
      <p id="form-title">Preferences</p>
@@ -108,6 +109,7 @@ body {
        <input type="submit" name="preferences" value="Submit preferences">
      </form>
    </div>
+ </div>
  </div>
 
 <?php include('footer.php');?>

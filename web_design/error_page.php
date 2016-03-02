@@ -5,10 +5,12 @@ $error = $_GET['error'];
 $linkprev = $_GET['link'];
 echo '
 	<div id="page">
-	<br><br>
-	<p>'.$error.'</p>
-	<br>
-	<a href='.$linkprev.'>Return to form</a> 
+		<div id="page-wrap">
+		<br><br>
+			<p>'.$error.'</p>
+		<br>
+			<a href='.$linkprev.'>Return to form</a> 
+		</div>
 	</div>
 	';
 
