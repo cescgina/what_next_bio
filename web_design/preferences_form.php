@@ -116,47 +116,42 @@ body {
                </div>
                <div id="ck-button">
                  <label>
-                   <input type="checkbox" name="tag" value="biomed"><span>Biomedicine</span>
+                   <input type="checkbox" name="tag" value="biochem"><span>Biochemistry</span>
                  </label>
                </div>
                <div id="ck-button">
                  <label>
-                   <input type="checkbox" name="tag" value="biomed"><span>Biochemistry</span>
+                   <input type="checkbox" name="tag" value="bioinfo"><span>Bioinformatics</span>
                  </label>
                </div>
                <div id="ck-button">
                  <label>
-                   <input type="checkbox" name="tag" value="biomed"><span>Bioinformatics</span>
+                   <input type="checkbox" name="tag" value="biotech"><span>Biotechnology</span>
                  </label>
                </div>
                <div id="ck-button">
                  <label>
-                   <input type="checkbox" name="tag" value="biomed"><span>Biotechnology</span>
+                   <input type="checkbox" name="tag" value="bioenv"><span>Enviromental</span>
                  </label>
                </div>
                <div id="ck-button">
                  <label>
-                   <input type="checkbox" name="tag" value="biomed"><span>Enviromental</span>
+                   <input type="checkbox" name="tag" value="biomicro"><span>Microbiology</span>
                  </label>
                </div>
                <div id="ck-button">
                  <label>
-                   <input type="checkbox" name="tag" value="biomed"><span>Microbiology</span>
+                   <input type="checkbox" name="tag" value="biogen"><span>Genetics</span>
                  </label>
                </div>
-               <div id="ck-button">
-                 <label>
-                   <input type="checkbox" name="tag" value="biomed"><span>Genetics</span>
-                 </label>
-               </div>
-               <label for="biomed">Biomedicine</label> <input type="checkbox" name="tag[]" id="biomed" value="Biomedicine">
+<!--               <label for="biomed">Biomedicine</label> <input type="checkbox" name="tag[]" id="biomed" value="Biomedicine">
                <label for="biochem">Biochemistry</label> <input type="checkbox" name="tag[]" id="biochem" value="Biochemistry">
                <label for="bioinfo">Bioinformatics</label> <input type="checkbox" name="tag[]" id="bioinfo" value="Bioinformatics">
                <label for="biotech">Biotechnology</label> <input type="checkbox" name="tag[]" id="biotech" value="Biotechnology">
                <label for="biotech">Environmental</label> <input type="checkbox" name="tag[]" id="bioenv" value="Environmental">
                  <label for="biomicro">Microbiology</label> <input type="checkbox" name="tag[]" id="biomicro" value="Microbiology">
                <label for="biogen">Genetics</label> <input type="checkbox" name="tag[]" id="biogen" value="Genetics">
-             </td>
+-->          </td>
            </tr>
            <tr class="spaceUnder">
              <td align="left">Position:</td>
