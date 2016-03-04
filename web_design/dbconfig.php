@@ -15,6 +15,7 @@
 	}
 	catch(PDOException $e) {
 		echo $e->getMessage();
+        exit;
 	}
 
 	include_once 'Class.user.php';
