@@ -20,7 +20,7 @@ if ($stags->rowCount()>0){
     }
 }
 //Query based on the user-specific information
-$query = "SELECT DISTINCT (t1.link),t1.title,t1.location FROM ( SELECT * from demo WHERE stage=:stage) as t1";
+$query = "SELECT DISTINCT (t1.link),t1.title, t1.description, t1.location FROM ( SELECT * from demo WHERE stage=:stage) as t1";
 if ($tags){
     $query .= " join ( SELECT * FROM offer_tags WHERE tag=:tag0";
     for ($i=1;$i<count($tags);$i++){
@@ -52,6 +52,7 @@ if (isset($location) and $location != "both"){
 }
 $stmt->execute();
 $result = $stmt->fetchAll();
+
 //result contains the list of offers that conform to the user specifications
 include('header.php');
 ?>
@@ -69,8 +70,13 @@ if ($affeccted_rows == 0){
 else {
     echo '<form name="add_fav" method="POST" action="addfav.php" enctype="">';
    foreach ($result as $row){
-                echo "<tr><td><a href=''><img style=' with:25px; height:25px;' src='http://findicons.com/files/icons/767/wp_woothemes_ultimate/128/star.png'></a><input type='checkbox' name='links[]' value='" . $row['link'] . "'></td><td><a href=" . $row['link']. ">".$row['title'] . "</a></td><td>" . $row['location'] . "</td></tr>";
+                echo "<tr><td><a href=''><img style=' with:25px; height:25px;' src='style/star.png'></a><input type='checkbox' name='links[]' value='" . $row['link'] . "'></td><td><a href=" . $row['link']. "><b>".$row['title'] . "</b></a></td><td>" . $row['location'] . "</td></tr>";
     }
+      if (!preg_match('/eurax/', $row['link']) ){
+             echo "<tr> <td colspan=3>" . $row['description'] . "</td>   </tr>";
+         } else{
+             echo "<tr> <td> <i>Description is not large enough. Please go to the original website :^) </i></td>   </tr>";
+         }
     echo '<input class="Button" type="submit" value="Add Favourites"/>';
     echo '</form>';
 }
