@@ -21,6 +21,8 @@ else {
     echo '<form name="rmfav" method="POST" action="rmfav.php">';
    foreach ($result as $row){
                 echo "<tr><td><a href=''><img style=' with:25px; height:25px;' src='http://findicons.com/files/icons/767/wp_woothemes_ultimate/128/star.png'></a><input type='checkbox' name='links[]' value='" . $row['link'] . "'></td><td><a href=" . $row['link']. ">".$row['title'] . "</a></td><td>" . $row['location'] . "</td></tr>";
+         echo "<tr> <td colspan=3>" . $row['description'] . "</td></tr>";
+
     }
     echo '<input class="Button" type="submit" value="Remove Favourites"/>';
     echo '</form>';

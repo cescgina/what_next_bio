@@ -30,29 +30,31 @@ if(isset($_POST['login']))
 if(isset($_POST['pass_rem'])) {
  $email = $_POST['email'];
  
- try
-      {
-         $stmt = $dbc->prepare("SELECT email FROM users WHERE email=:email");
-         $stmt->execute(array(':email'=>$email));
-         $row=$stmt->fetch(PDO::FETCH_ASSOC);
-    
-         if($row['email']==$email) {
-		$characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
-		$string = '';
-		for ($i = 0; $i < 8; $i++) {
-			$string .= $characters[rand(0, strlen($characters) - 1)];
-		}
-		$new_password = password_hash($string, PASSWORD_DEFAULT);
-		$spos=$dbc->prepare("UPDATE users SET password = :password WHERE email=:email");
-		$spos->execute(array("password"=>$new_password,"email"=>$email));
-		$msg = "Hi $email! The team of WhatNextBio is grateful to you for using our services!\nYour new password is $string.\n";
-		$msg = wordwrap($msg,70);
-		mail("$email","WhatNextBio: Password change",$msg);
-         	header('Location: error_page.php?link=login.php&error=A new password has been sent to your e-mail account!');
-         } else {
-		header('Location: error_page.php?link=login.php&error=No user with this email exists!');
-	}
- }
+     try{
+             $stmt = $dbc->prepare("SELECT email FROM users WHERE email=:email");
+             $stmt->execute(array(':email'=>$email));
+             $row=$stmt->fetch(PDO::FETCH_ASSOC);
+
+             if($row['email']==$email) {
+            $characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+            $string = '';
+            for ($i = 0; $i < 8; $i++) {
+                $string .= $characters[rand(0, strlen($characters) - 1)];
+            }
+            $new_password = password_hash($string, PASSWORD_DEFAULT);
+            $spos=$dbc->prepare("UPDATE users SET password = :password WHERE email=:email");
+            $spos->execute(array("password"=>$new_password,"email"=>$email));
+            $msg = "Hi $email! The team of WhatNextBio is grateful to you for using our services!\nYour new password is $string.\n";
+            $msg = wordwrap($msg,70);
+            mail("$email","WhatNextBio: Password change",$msg);
+                header('Location: error_page.php?link=login.php&error=A new password has been sent to your e-mail account!');
+             } else {
+            header('Location: error_page.php?link=login.php&error=No user with this email exists!');
+        }
+     }
+     catch(PDOException $e) {
+         		echo $e->getMessage();
+     }
 }
 include('header.php');
 ?>

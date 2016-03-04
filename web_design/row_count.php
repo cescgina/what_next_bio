@@ -1,4 +1,5 @@
 <?php
+        require_once 'dbconfig.php';
 		$sql = "SELECT count(*) FROM demo"; 
 		$result = $dbc->prepare($sql); 
 		$result->execute(); 
