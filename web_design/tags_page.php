@@ -77,9 +77,9 @@ else {
             echo "<img style=' width:25px; height:25px;' src='style/star.png'></label>";
     echo "</td><td><a href=" . $row['link']. "><b>".$row['title'] . "</b></a></td><td>" . $row['location'] . "</td></tr>";
       if (!preg_match('/eurax/', $row['link'] ) ){
-            echo "<tr><td></td> <td colspan=2>" . $row['description'] . "</td></tr>";
+            echo "<tr class='spaceUnder'><td></td> <td colspan=2>" . $row['description'] . "</td></tr>";
         } else{
-            echo "<tr><td></td> <td colspan=2> <i>Description is not large enough. Please go to the original website :^) </i></td>   </tr>";
+            echo "<tr class='spaceUnder'><td></td> <td colspan=2> <i>Description is not large enough. Please go to the original website :^) </i></td>   </tr>";
         }
        $checkid++;
    }
