@@ -897,6 +897,10 @@ div label input {
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bc80ea', endColorstr='#dfbdfa',GradientType=0);
 	background-color:#bc80ea;	
 }
+
+#check {
+	display: none;
+}
 CSS;
 
 ?>

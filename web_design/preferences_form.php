@@ -31,37 +31,37 @@ body {
              <td align="center">
                <div id="ck-button-biomed">
                  <label>
-                   <input type="checkbox" name="tag[]" value="Biomedicine"><span>Biomedicine</span>
+                   <input type="checkbox" id="check" name="tag[]" value="Biomedicine"><span>Biomedicine</span>
                  </label>
                </div>
                <div id="ck-button-biochem">
                  <label>
-                   <input type="checkbox" name="tag[]" value="Biochemistry"><span>Biochemistry</span>
+                   <input type="checkbox" id="check" name="tag[]" value="Biochemistry"><span>Biochemistry</span>
                  </label>
                </div>
                <div id="ck-button-bioinfo">
                  <label>
-                   <input type="checkbox" name="tag[]" value="Bioinformatics"><span>Bioinformatics</span>
+                   <input type="checkbox" id="check" name="tag[]" value="Bioinformatics"><span>Bioinformatics</span>
                  </label>
                </div>
                <div id="ck-button-biotech">
                  <label>
-                   <input type="checkbox" name="tag[]" value="Biotechnology"><span>Biotechnology</span>
+                   <input type="checkbox" id="check" name="tag[]" value="Biotechnology"><span>Biotechnology</span>
                  </label>
                </div>
                <div id="ck-button-bioenv">
                  <label>
-                   <input type="checkbox" name="tag[]" value="Enviromental"><span>Enviromental</span>
+                   <input type="checkbox" id="check" name="tag[]" value="Enviromental"><span>Enviromental</span>
                  </label>
                </div>
                <div id="ck-button-biomicro">
                  <label>
-                   <input type="checkbox" name="tag[]" value="Microbiology"><span>Microbiology</span>
+                   <input type="checkbox" id="check" name="tag[]" value="Microbiology"><span>Microbiology</span>
                  </label>
                </div>
                <div id="ck-button-biogen">
                  <label>
-                   <input type="checkbox" name="tag[]" value="Genetics"><span>Genetics</span>
+                   <input type="checkbox" id="check" name="tag[]" value="Genetics"><span>Genetics</span>
                  </label>
                </div>
 <!--               <label for="biomed">Biomedicine</label> <input type="checkbox" name="tag[]" id="biomed" value="Biomedicine">
