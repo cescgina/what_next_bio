@@ -44,10 +44,7 @@ if(isset($_POST['pass_rem'])) {
             $new_password = password_hash($string, PASSWORD_DEFAULT);
             $spos=$dbc->prepare("UPDATE users SET password = :password WHERE email=:email");
             $spos->execute(array("password"=>$new_password,"email"=>$email));
-            $msg = "Hi $email! The team of WhatNextBio is grateful to you for using our services!\nYour new password is $string.\n";
-            $msg = wordwrap($msg,70);
-            mail("$email","WhatNextBio: Password change",$msg);
-                header('Location: error_page.php?link=login.php&error=A new password has been sent to your e-mail account!');
+	   header("Location: error_page.php?link=login.php&error=$string");
              } else {
             header('Location: error_page.php?link=login.php&error=No user with this email exists!');
         }

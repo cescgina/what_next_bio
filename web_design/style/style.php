@@ -31,7 +31,7 @@ $font_size_button = '10px';
 
 echo <<<CSS
 
-html { 
+html {
 	background-color: $background_color;
 }
 
@@ -41,7 +41,7 @@ body {
 	top:0px;
 	left:0px;
 	right:0px;
-	bottom:0px; 
+	bottom:0px;
 }
 
 #head {
@@ -84,7 +84,8 @@ body {
 	left: 0px;
 	bottom: 0px;
 	background:$nav_color;
-	border-right: $margin_border solid $margin_color;	
+	border-right: $margin_border solid $margin_color;
+	color: white;
 }
 
 #horizontal_bar {
@@ -122,10 +123,10 @@ li a:hover {
 	z-index: 1;
 }
 
-#page-wrap { 
-	width: 50%;
-	margin-left: 30%;
-	margin-right: 30%;
+#page-wrap {
+	width: 70%;
+	margin-left: 20%;
+	margin-right: 20%;
 	float: right;
 	float: left;
 	padding: 20px;
@@ -300,7 +301,7 @@ label + input {
     background-color: $link_color1;
     color: black;
     padding: 14px 25px;
-    text-align: center; 
+    text-align: center;
     text-decoration: none;
     display: inline-block;
 }
@@ -341,7 +342,7 @@ a {
 
 tr:hover {
     background-color:#e0e0d1 ;
-} 
+}
 
 /* Apply padding to td elements that are direct children of the tr element. */
 tr.spaceUnder > td
@@ -665,7 +666,7 @@ div label input {
 	background:-ms-linear-gradient(top, #77a809 5%, #89c403 100%);
 	background:linear-gradient(to bottom, #77a809 5%, #89c403 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77a809', endColorstr='#89c403',GradientType=0);
-	background-color:#77a809;	
+	background-color:#77a809;
 }
 
 /*blue-buttons */
@@ -742,7 +743,7 @@ div label input {
 	background:-ms-linear-gradient(top, #476e9e 5%, #7892c2 100%);
 	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
-	background-color:#476e9e;	
+	background-color:#476e9e;
 }
 
 #ck-button-biomicro {
@@ -818,7 +819,7 @@ div label input {
 	background:-ms-linear-gradient(top, #0061a7 5%, #007dc1 100%);
 	background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0061a7', endColorstr='#007dc1',GradientType=0);
-	background-color:#0061a7;	
+	background-color:#0061a7;
 }
 
 /*violet-button */
@@ -895,12 +896,22 @@ div label input {
 	background:-ms-linear-gradient(top, #bc80ea 5%, #dfbdfa 100%);
 	background:linear-gradient(to bottom, #bc80ea 5%, #dfbdfa 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bc80ea', endColorstr='#dfbdfa',GradientType=0);
-	background-color:#bc80ea;	
+	background-color:#bc80ea;
+}
+
+#nav_button {
+	color: black;
+	width: 130px;
+	height: 50px;
+	text-align: center;
 }
 
 #check {
 	display: none;
 }
+
+input.checks:hover+label{border-radius: 25px; border: solid black 1px;}
+input.checks:checked+label{ background-color: #0074D9; border-radius: 20px; } 
 CSS;
 
 ?>

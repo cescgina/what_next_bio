@@ -23,6 +23,7 @@ if(isset($_POST['change_pwd']))
 			$new_password = password_hash($password, PASSWORD_DEFAULT);
             $spass=$dbc->prepare("UPDATE users SET password = :pass WHERE username=:user");
 			$spass->execute(array("pass"=>$new_password,"user"=>$_SESSION['username']));
+			header('Location: error_page.php?link=change_pass.php&error=Password changed succesfully!');
          }
          else
          {
@@ -37,7 +38,8 @@ if(isset($_POST['change_pwd']))
 }
 include('header.php');
 ?>
-		</div>
+	<div id ="page">
+	<section>
 		<div id="page-wrap">
 			<div id="form-container">
 				<p id="form-title">Change password</p>
@@ -49,4 +51,7 @@ include('header.php');
 				</form>
 			</div>
 		</div>
+	</section>
+	</div>
+	
 <?php include('footer.php');?>

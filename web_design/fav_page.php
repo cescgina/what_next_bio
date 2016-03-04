@@ -19,14 +19,20 @@ if ($affeccted_rows == 0){
 }
 else {
     echo '<form name="rmfav" method="POST" action="rmfav.php">';
+    $checkid=0;
    foreach ($result as $row){
-                echo "<tr><td><a href=''><img style=' with:25px; height:25px;' src='style/star.png'></a><input type='checkbox' name='links[]' value='" . $row['link'] . "'></td><td><a href=" . $row['link']. ">".$row['title'] . "</a></td><td>" . $row['location'] . "</td></tr>";
-								if (!preg_match('/eurax/', $row['link']) ){
-					             echo "<tr> <td colspan=3>" . $row['description'] . "</td>   </tr>";
-					         } else{
-					             echo "<tr> <td> <i>Description is not large enough. Please go to the original website :^) </i></td>   </tr>";
-					         }
-		}
+        echo "<tr><td>";
+        echo "<input type='checkbox' class='checks' name='links[]' value='" . $row['link'] . "' id='check".$checkid."' style='display: none;'>";
+        echo "<label class='favbutton' style=' width:25px; height:25px;' for='check".$checkid."'>";
+        echo "<img style=' width:25px; height:25px;' src='style/star.png'></label>";
+        echo "</td><td><a href=" . $row['link']. "><b>".$row['title'] . "</b></a></td><td>" . $row['location'] . "</td></tr>";
+        if (!preg_match('/eurax/', $row['link'] ) ){
+            echo "<tr><td></td> <td colspan=2>" . $row['description'] . "</td></tr>";
+        } else{
+            echo "<tr><td></td> <td colspan=2> <i>Description is not large enough. Please go to the original website :^) </i></td>   </tr>";
+        }
+       $checkid++;
+    }
     echo '<input class="Button" type="submit" value="Remove Favourites"/>';
     echo '</form>';
 }

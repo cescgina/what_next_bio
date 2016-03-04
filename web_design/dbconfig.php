@@ -10,7 +10,7 @@
     $dbname="DBW09";
 
     try {
-		$dbc = new PDO('mysql:host='.$host.';dbname='.$dbname,$DB_user,$pass); /*db name*/
+		$dbc = new PDO('mysql:host='.$host.';dbname='.$dbname,$DB_user,$pass,array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8')); /*db name*/
 		$dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
 	catch(PDOException $e) {

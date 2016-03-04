@@ -16,36 +16,40 @@ include('header.php');
                                 $stmt->execute();
                                 $result = $stmt->fetchAll();
                                 echo '<form name="add_fav" method="POST" action="addfav.php" enctype="">';
+                                $checkid=0;
                                 foreach ($result as $row){
-                                            echo "<tr><td><a href=''><img style=' with:25px; height:25px;' src='style/star.png'></a><input type='checkbox' name='links[]' value='" . $row['link'] . "'></td><td><a href=" . $row['link']. ">".$row['title'] . "</a></td><td></td><td>" . $row['location'] . "</td></tr>";
+                                            echo "<tr><td>";
+                                            echo "<input type='checkbox' class='checks' name='links[]' value='" . $row['link'] . "' id='check".$checkid."' style='display: none;'>";
+                                            echo "<label class='favbutton' style=' width:25px; height:25px;' for='check".$checkid."'>";
+                                            echo "<img style=' width:25px; height:25px;' src='style/star.png'></label>";
+                                    echo "</td><td><a href=" . $row['link']. "><b>".$row['title'] . "</b></a></td><td>" . $row['location'] . "</td></tr>";
 
-                                   //if (preg_match('jobs', $row['link'] ) ){
-                                        echo "<tr> <td colspan=3>" . $row['description'] . "</td></tr>";
-                                  //  } else{
-                                   //     echo "<tr> <td> Description is not large enough. Please go to the original website :^) </td>   </tr>";
-                                   // }
-
-																}
+                                   if (!preg_match('/eurax/', $row['link'] ) ){
+                                        echo "<tr><td></td> <td colspan=2>" . $row['description'] . "</td></tr>";
+                                    } else{
+                                        echo "<tr><td></td> <td colspan=2> <i>Description is not large enough. Please go to the original website :^) </i></td>   </tr>";
+                                    }
+                                    $checkid++;
+                                }
                                 echo '<input class="Button" type="submit" value="Add Favourites"/>';
                                 echo '</form>';
 
                         }
                         else {
                             $sql = "SELECT title, location,description, date, link
-							 							FROM demo ORDER BY date DESC LIMIT ".($x * $n).", $x";
+							FROM demo ORDER BY date DESC LIMIT ".($x * $n).", $x";
 
                             $stmt = $dbc->prepare($sql);
                             $stmt->execute();
                             $result = $stmt->fetchAll();
                             foreach ($result as $row){
-                                        echo "<tr><td><a href=" . $row['link']. "><b>".$row['title'] . "</b></a></td><td>" . $row['location'] . "</td></tr>";
-																				if (!preg_match('/eurax/', $row['link']) ){
-																	             echo "<tr class='spaceUnder'> <td colspan=3>" . $row['description'] . "</td>   </tr>";
-																	         } else{
-																	             echo "<tr class='spaceUnder'> <td> <i>Description is not large enough. Please go to the original website :^) </i></td>   </tr>";
-																	         }
-														}
-
+                                 echo "<tr><td><a href=" . $row['link']. "><b>".$row['title'] . "</b></a></td>";
+                                 echo "<td>" . $row['location'] . "</td></tr>";
+                                 if (!preg_match('/eurax/', $row['link']) ){						                  			             echo "<tr class='spaceUnder'> <td colspan=2>" . $row['description'] . "</td>   </tr>";
+                                 } else{
+                                     echo "<tr class='spaceUnder'> <td colspan=2> <i>Description is not large enough. Please go to the original website :^) </i></td>   </tr>";
+                                 }
+                            }
                         }
 						$dbc=null;
 					?>
