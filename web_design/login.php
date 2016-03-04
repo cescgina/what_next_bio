@@ -27,6 +27,33 @@ if(isset($_POST['login']))
   header('Location: error_page.php?link=login.php&error=Incorrect username or password. Please try again.');
  } 
 }
+if(isset($_POST['pass_rem'])) {
+ $email = $_POST['email'];
+ 
+ try
+      {
+         $stmt = $dbc->prepare("SELECT email FROM users WHERE email=:email");
+         $stmt->execute(array(':email'=>$email));
+         $row=$stmt->fetch(PDO::FETCH_ASSOC);
+    
+         if($row['email']==$email) {
+		$characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+		$string = '';
+		for ($i = 0; $i < 8; $i++) {
+			$string .= $characters[rand(0, strlen($characters) - 1)];
+		}
+		$new_password = password_hash($string, PASSWORD_DEFAULT);
+		$spos=$dbc->prepare("UPDATE users SET password = :password WHERE email=:email");
+		$spos->execute(array("password"=>$new_password,"email"=>$email));
+		$msg = "Hi $email! The team of WhatNextBio is grateful to you for using our services!\nYour new password is $string.\n";
+		$msg = wordwrap($msg,70);
+		mail("$email","WhatNextBio: Password change",$msg);
+         	header('Location: error_page.php?link=login.php&error=A new password has been sent to your e-mail account!');
+         } else {
+		header('Location: error_page.php?link=login.php&error=No user with this email exists!');
+	}
+ }
+}
 include('header.php');
 ?>
 		</div>
@@ -38,10 +65,14 @@ include('header.php');
 						<label>Username/email:</label> <input type="text" name="name_email"required><br /><br />
 						<label>Password:</label> <input type="password" name="password" required><br /><br />
 						<input type="submit" name="login" value="Submit">
-						<br /><br />
-						<p>I don't have an account yet !</p>
-						<a href="register.php">Register</a>
 					</form>
+					<form method="post" name="pass_rem" action="login.php">
+						<p>I don't remember my password...</p>
+						<label>E-mail:</label> <input type="text" name="email" required><br /><br />
+						<input type="submit" name="pass_rem" value="Send me a new one">
+					</form>
+					<p>I don't have an account yet!</p>
+					<a href="register.php">Register</a>
 				</div>
 			</div>
 		</div>
