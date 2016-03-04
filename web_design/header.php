@@ -22,7 +22,7 @@
   							<input class="Button" type="submit" value="Log Out"/>
 						</form>
 						<br>
-						<form method="post" name="change" action="logout.php">
+						<form method="post" name="change" action="change_pass.php">
   							<input class="Button" type="submit" value="Change password"/>
 						</form>
 						<br>
