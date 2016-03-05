@@ -31,20 +31,59 @@ if(isset($_POST['pass_rem'])) {
  $email = $_POST['email'];
  
      try{
-             $stmt = $dbc->prepare("SELECT email FROM users WHERE email=:email");
+            require 'PHPMailerAutoload.php';
+             $stmt = $dbc->prepare("SELECT email,username FROM users WHERE email=:email");
              $stmt->execute(array(':email'=>$email));
              $row=$stmt->fetch(PDO::FETCH_ASSOC);
-
+             $userchange=$row['username'];
              if($row['email']==$email) {
-            $characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
-            $string = '';
-            for ($i = 0; $i < 8; $i++) {
-                $string .= $characters[rand(0, strlen($characters) - 1)];
-            }
-            $new_password = password_hash($string, PASSWORD_DEFAULT);
-            $spos=$dbc->prepare("UPDATE users SET password = :password WHERE email=:email");
-            $spos->execute(array("password"=>$new_password,"email"=>$email));
-	   header("Location: error_page.php?link=login.php&error=$string");
+                    $characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+                    $string = '';
+                    for ($i = 0; $i < 8; $i++) {
+                        $string .= $characters[rand(0, strlen($characters) - 1)];
+                    }
+                $new_password = password_hash($string, PASSWORD_DEFAULT);
+                //mail
+
+                $mail = new PHPMailer;
+
+                //$mail->SMTPDebug = 3;                               // Enable verbose debug output
+
+                $mail->isSMTP();                                      // Set mailer to use SMTP
+                 $mail->SMTPAuth = true;   
+                 $mail->SMTPDebug = 2;
+                 // Enable SMTP authentication
+               // $mail->Username = 'whatnextbio.dbw@gmail.com';                 // SMTP username
+                //$mail->Password = 'whatnextbio.dbw';                           // SMTP password
+                 $mail->Username = 'whatnextbio@gmail.com';
+                 $mail->Password = 'Whatnextbio1';
+                $mail->SMTPSecure = 'tls';
+                $mail->Host = 'smtp.gmail.com';
+                $mail->Port = 587;                                   // TCP port to connect to
+
+                $mail->setFrom('whatnextbio.dbw@gmail.com', 'The WhatNextBio Team');
+                $mail->addAddress($email, $userchange);     // Add a recipient
+//                $mail->addReplyTo('info@example.com', 'Information');
+//                $mail->addCC('cc@example.com');
+//                $mail->addBCC('bcc@example.com');
+
+//                $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+//                $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+//                $mail->isHTML(true);                                  // Set email format to HTML
+
+                $mail->Subject = 'Password change';
+        //        $mail->Body    = '<p>Dear '.$userchange.',</p><p>Your new password is '.$string . '</p><p>Thanks for using our web!<\p><p>The WhatNextBio Team</p>';
+               $mail->Body = 'Dear '.$userchange.',\nYour new password is '.$string . '\n\nThanks for using our web!\nThe WhatNextBio Team';
+
+                if(!$mail->send()) {
+                    echo 'Message could not be sent.';
+                    echo 'Mailer Error: ' . $mail->ErrorInfo;
+                } else {
+                    echo 'Message has been sent';
+                }
+                $spos=$dbc->prepare("UPDATE users SET password = :password WHERE email=:email");
+                $spos->execute(array("password"=>$new_password,"email"=>$email));
+                header("Location: home.php");
              } else {
             header('Location: error_page.php?link=login.php&error=No user with this email exists!');
         }
