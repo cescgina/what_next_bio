@@ -55,13 +55,13 @@ if(isset($_POST['pass_rem'])) {
                  // Enable SMTP authentication
                // $mail->Username = 'whatnextbio.dbw@gmail.com';                 // SMTP username
                 //$mail->Password = 'whatnextbio.dbw';                           // SMTP password
-                 $mail->Username = 'whatnextbio@gmail.com';
+                 $mail->Username = 'whatnextbiodbw@gmail.com';
                  $mail->Password = 'Whatnextbio1';
                 $mail->SMTPSecure = 'tls';
                 $mail->Host = 'smtp.gmail.com';
                 $mail->Port = 587;                                   // TCP port to connect to
 
-                $mail->setFrom('whatnextbio.dbw@gmail.com', 'The WhatNextBio Team');
+                $mail->setFrom('whatnextbiodbw@gmail.com', 'The WhatNextBio Team');
                 $mail->addAddress($email, $userchange);     // Add a recipient
 //                $mail->addReplyTo('info@example.com', 'Information');
 //                $mail->addCC('cc@example.com');
@@ -69,11 +69,11 @@ if(isset($_POST['pass_rem'])) {
 
 //                $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
 //                $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-//                $mail->isHTML(true);                                  // Set email format to HTML
 
                 $mail->Subject = 'Password change';
-        //        $mail->Body    = '<p>Dear '.$userchange.',</p><p>Your new password is '.$string . '</p><p>Thanks for using our web!<\p><p>The WhatNextBio Team</p>';
-               $mail->Body = 'Dear '.$userchange.',\nYour new password is '.$string . '\n\nThanks for using our web!\nThe WhatNextBio Team';
+                $mail->Body    = '<p>Dear <b>'.$userchange.',</b></p><p>Your new password is <i>'.$string . '</i></p><p>Thanks for using our web!</p><p>The WhatNextBio Team</p>';
+                $mail->isHTML(true);                                  // Set email format to HTML
+             //  $mail->Body = 'Dear '.$userchange.',\nYour new password is '.$string . '\n\nThanks for using our web!\nThe WhatNextBio Team';
 
                 if(!$mail->send()) {
                     echo 'Message could not be sent.';
@@ -83,7 +83,9 @@ if(isset($_POST['pass_rem'])) {
                 }
                 $spos=$dbc->prepare("UPDATE users SET password = :password WHERE email=:email");
                 $spos->execute(array("password"=>$new_password,"email"=>$email));
-                header("Location: home.php");
+                header("Location: error_page.php");
+                 exit;
+
              } else {
             header('Location: error_page.php?link=login.php&error=No user with this email exists!');
         }

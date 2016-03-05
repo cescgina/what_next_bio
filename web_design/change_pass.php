@@ -23,7 +23,7 @@ if(isset($_POST['change_pwd']))
 			$new_password = password_hash($password, PASSWORD_DEFAULT);
             $spass=$dbc->prepare("UPDATE users SET password = :pass WHERE username=:user");
 			$spass->execute(array("pass"=>$new_password,"user"=>$_SESSION['username']));
-			header('Location: error_page.php?link=change_pass.php&error=Password changed succesfully!');
+			header('Location: error_page.php?link=home.php&error=Password changed succesfully!');
          }
          else
          {
