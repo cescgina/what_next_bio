@@ -85,7 +85,8 @@ body {
 	bottom: 0px;
 	background:$nav_color;
 	border-right: $margin_border solid $margin_color;
-	color: white;
+	color: black;
+	font-size: 150%;
 }
 
 #horizontal_bar {
@@ -332,6 +333,7 @@ aside {
 
 table {
 	text-align: left;
+	vertical-align:middle;
 	font-family: $font2;
 }
 
@@ -347,13 +349,9 @@ tr:hover {
 /* Apply padding to td elements that are direct children of the tr element. */
 tr.spaceUnder > td
 {
-  padding-bottom: 1em;
+  padding-bottom: 3em;
 }
 
-tr.spaceUnder > td
-{
-  padding-bottom: 1em;
-}
 
 div label input {
    margin-right:100px;
@@ -902,7 +900,7 @@ div label input {
 #nav_button {
 	color: black;
 	width: 130px;
-	height: 50px;
+	height: 35px;
 	text-align: center;
 }
 
@@ -910,8 +908,15 @@ div label input {
 	display: none;
 }
 
-input.checks:hover+label{border-radius: 25px; border: solid black 1px;}
-input.checks:checked+label{ background-color: #0074D9; border-radius: 20px; } 
+input.checks:hover+label {
+	border-radius: 25px; 
+	border: solid black 1px;
+}
+
+input.checks:checked+label{ 
+	background-color: #0074D9; 
+	border-radius: 20px; 
+} 
 CSS;
 
 ?>
